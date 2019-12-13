@@ -42,9 +42,13 @@
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="New password" formControlName="password" type="password">
-                        <mat-error *ngIf="formulario.controls['password'].hasError('required')">
-                            Email is <strong>required</strong>
+                        <mat-error *ngIf="formulario.controls['password'].hasError('minLength') && !formulario.controls['password'].hasError('required')">
+                            The password should have <strong>more than 3 characters </strong>
                         </mat-error>
+                        <mat-error *ngIf="formulario.controls['password'].hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+
                     </mat-form-field>
                 </div>
             </div>
@@ -79,7 +83,7 @@
 
         </mat-card-content>
         <mat-card-actions>
-            <button style="width: -webkit-fill-available;" mat-raised-button color="primary" type="submit">Submit</button>
+            <button style="width: -webkit-fill-available;" mat-raised-button color="primary" type="submit">Sign Up</button>
         </mat-card-actions>
     </mat-card>
 </form>

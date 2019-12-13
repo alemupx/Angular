@@ -11,7 +11,7 @@ export class DataDbService {
   private coleccionUsuario: AngularFirestoreCollection<User>;
 
   constructor(private afs: AngularFirestore) {
-    this.coleccionUsuario = afs.collection<User>('usuarios')
+    this.coleccionUsuario = afs.collection<User>('usuariosRegistrados')
   }
 
   crearUsuario(nuevoUsuario: User): void {
