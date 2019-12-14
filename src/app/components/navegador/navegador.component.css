@@ -6,6 +6,14 @@
     width: 200px;
 }
 
+#titulo {
+    text-align: center;
+}
+
+.mat-h1 {
+    margin-bottom: -50px;
+}
+
 .sidenav .mat-toolbar {
     background: inherit;
 }
@@ -14,6 +22,15 @@
     position: sticky;
     top: 0;
     z-index: 1;
+}
+
+#contenedorEspecifico {
+    background-color: gold;
+    display: contents;
+}
+
+.espaciador {
+    flex: 1 1 auto;
 }
 
 @media(min-width: 957px) {
