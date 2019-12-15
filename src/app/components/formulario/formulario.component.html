@@ -1,0 +1,58 @@
+<form [formGroup]="formulario" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Añadir un objeto al inventario</mat-card-title>
+            <mat-card-subtitle>Es simple y fácil.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Título" formControlName="title">
+                    <mat-error *ngIf="formulario.controls['title'].hasError('required')">
+                        El título es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Subtítulo" formControlName="subTitle">
+                    <mat-error *ngIf="formulario.controls['subTitle'].hasError('required')">
+                        El subtítulo es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Descripción" formControlName="description">
+                    <mat-error *ngIf="formulario.controls['description'].hasError('minlength')">
+                        La descripción debe contener al menos <strong>15 caracteres</strong>
+                    </mat-error>
+                    <mat-error *ngIf="formulario.controls['description'].hasError('required')">
+                        La descripción es <strong>requerida</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="row">
+                <mat-form-field class="full-width">
+                    <ngx-mat-file-input placeholder="Seleccione la imagen..." formControlName="image"></ngx-mat-file-input>
+                    <mat-error *ngIf="formulario.controls['image'].hasError('required')">
+                        La imagen es <strong>requerida</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div> -->
+
+
+
+
+
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button style="width: -webkit-fill-available;" mat-raised-button color="primary" type="submit">Añadir</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

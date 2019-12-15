@@ -29,10 +29,10 @@
 }
 
 h1 {
-    /* margin-bottom: -135px; */
+    margin-bottom: -30px;
     text-align: center;
 }
 
 mat-grid-list {
-    background-color: gray;
+    /* background-color: gray; */
 }

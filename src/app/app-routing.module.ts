@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormularioComponent } from './componentes/formulario/formulario.component';
-import { TarjetasComponent } from './componentes/tarjetas/tarjetas.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 const routes: Routes = [
   { path: 'form', component: FormularioComponent },
   { path: 'grids', component: TarjetasComponent },
-  { path: '**', component: FormularioComponent }
+  { path: '**', component: TarjetasComponent }
 ];
 
 @NgModule({

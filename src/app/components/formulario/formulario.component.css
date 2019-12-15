@@ -30,3 +30,11 @@
 mat-card-header {
     margin-left: -15px;
 }
+
+mat-form-field {
+    margin-bottom: 10px;
+}
+
+mat-toolbar {
+    background-color: #212121;
+}

@@ -1,32 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
+import { NavegadorComponent } from './components/navegador/navegador.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
+
+//Material
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NavegadorComponent } from './componentes/navegador/navegador.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import {DataDbService} from './servicios/data-db.service';
-import { TarjetasComponent } from './componentes/tarjetas/tarjetas.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatMenuModule } from '@angular/material/menu';
+import { DataDbService } from './servicios/data-db.service';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +46,7 @@ import { MatMenuModule } from '@angular/material/menu';
     FormularioComponent,
     NavegadorComponent,
     TarjetasComponent,
+    DialogComponent,
 
   ],
   imports: [
@@ -41,6 +54,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
@@ -56,7 +70,8 @@ import { MatMenuModule } from '@angular/material/menu';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MaterialFileInputModule
 
 
   ],

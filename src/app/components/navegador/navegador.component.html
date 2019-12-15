@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer class="sidenav" fixedInViewport>
+        <mat-toolbar style="color: white;">Menu</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/grids">Glasses feed</a>
+            <a mat-list-item routerLink="/form">Glasses feedback</a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-toolbar color="primary">
+
+            <span id="titulo">Street</span>
+
+            <div class="espaciador"></div>
+
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                </button>
+
+        </mat-toolbar>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

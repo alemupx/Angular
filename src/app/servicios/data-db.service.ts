@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreModule } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { User } from '../model/user.interface'
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Sunglasses } from '../model/sunglasses.interface'
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataDbService {
-  private coleccionUsuario: AngularFirestoreCollection<User>;
+  private coleccionUsuario: AngularFirestoreCollection<Sunglasses>;
 
-  constructor(private afs: AngularFirestore) {
-    this.coleccionUsuario = afs.collection<User>('usuariosRegistrados')
+  constructor(afs: AngularFirestore) {
+    this.coleccionUsuario = afs.collection<Sunglasses>('SunglassesFeed')
   }
 
-  crearUsuario(nuevoUsuario: User): void {
-    this.coleccionUsuario.add(nuevoUsuario);
+  traerGafas() {
+
+    this.coleccionUsuario.;
+
+
+  }
+
+  agregarGafas(gafas: Sunglasses): void {
+    this.coleccionUsuario.add(gafas);
   }
 }
