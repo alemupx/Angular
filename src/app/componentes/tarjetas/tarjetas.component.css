@@ -4,10 +4,10 @@
 
 .dashboard-card {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
 }
 
 .more-button {
@@ -28,15 +28,11 @@
     background-size: cover;
 }
 
-.mat-h1 {
+h1 {
+    /* margin-bottom: -135px; */
     text-align: center;
-    font-weight: bold;
 }
 
 mat-grid-list {
-    background-color: none;
-}
-
-#tituloTarjeta {
-    margin: 1px 1px -60px 1px;
+    background-color: gray;
 }
