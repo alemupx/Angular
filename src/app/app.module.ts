@@ -31,13 +31,20 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage'
 import { environment } from '../environments/environment';
 import { DataDbService } from './servicios/data-db.service';
+import { TablaComponent } from './components/tabla/tabla.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -47,12 +54,14 @@ import { DataDbService } from './servicios/data-db.service';
     NavegadorComponent,
     TarjetasComponent,
     DialogComponent,
+    TablaComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -71,7 +80,11 @@ import { DataDbService } from './servicios/data-db.service';
     AngularFirestoreModule,
     MatGridListModule,
     MatMenuModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    AngularFireStorageModule
 
 
   ],

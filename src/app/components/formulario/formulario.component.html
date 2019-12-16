@@ -17,8 +17,8 @@
 
             <div class="row">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Subtítulo" formControlName="subTitle">
-                    <mat-error *ngIf="formulario.controls['subTitle'].hasError('required')">
+                    <input matInput placeholder="Subtítulo" formControlName="subtitle">
+                    <mat-error *ngIf="formulario.controls['subtitle'].hasError('required')">
                         El subtítulo es <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
@@ -38,12 +38,21 @@
 
             <!-- <div class="row">
                 <mat-form-field class="full-width">
-                    <ngx-mat-file-input placeholder="Seleccione la imagen..." formControlName="image"></ngx-mat-file-input>
+                    <ngx-mat-file-input placeholder="Seleccione la imagen..." formControlName="image" accept=".jp, , .png," (change)="onUpload($event)"></ngx-mat-file-input>
                     <mat-error *ngIf="formulario.controls['image'].hasError('required')">
                         La imagen es <strong>requerida</strong>
                     </mat-error>
                 </mat-form-field>
             </div> -->
+
+            <div class="row">
+                <div class="full-width">
+                    <input placeholder="Seleccione la imagen..." formControlName="image" accept="image/*" (change)="onUpload($event)" type="file">
+                    <mat-error *ngIf="formulario.controls['image'].hasError('required')">
+                        La imagen es <strong>requerida</strong>
+                    </mat-error>
+                </div>
+            </div>
 
 
 

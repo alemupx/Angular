@@ -7,20 +7,19 @@ import { Sunglasses } from '../model/sunglasses.interface'
 })
 
 export class DataDbService {
-  private coleccionUsuario: AngularFirestoreCollection<Sunglasses>;
 
-  constructor(afs: AngularFirestore) {
-    this.coleccionUsuario = afs.collection<Sunglasses>('SunglassesFeed')
+
+  private coleccionGafas: AngularFirestoreCollection<Sunglasses>;
+
+  constructor(private firestore: AngularFirestore) {
+    this.coleccionGafas = firestore.collection<Sunglasses>('Gafas')
   }
 
   traerGafas() {
-
-    this.coleccionUsuario.;
-
-
+    return this.firestore.collection('Gafas').snapshotChanges(); 
   }
 
   agregarGafas(gafas: Sunglasses): void {
-    this.coleccionUsuario.add(gafas);
+    this.coleccionGafas.add(gafas);
   }
 }

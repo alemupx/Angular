@@ -1,5 +1,6 @@
 export interface Sunglasses {
+    id: number,
     title: String,
-    subTitle: String,
+    subtitle: String,
     description: String,    
 }
