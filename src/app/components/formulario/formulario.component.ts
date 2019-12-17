@@ -3,7 +3,6 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { DataDbService } from '../../servicios/data-db.service'
 import { ToastrService } from 'ngx-toastr'
 import { AngularFireStorage } from '@angular/fire/storage'
-import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -20,12 +19,13 @@ export class FormularioComponent {
       subtitle: new FormControl('', Validators.required),
       description: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5)])),
       image: new FormControl('', Validators.required),
+      url: new FormControl('', Validators.required),
     });
   }
 
 
   formulario: FormGroup;
-  downloadURL: Observable<string>;
+  foo: String[] = [];
 
 
   constructor(private dbData: DataDbService, private almacenamiento: AngularFireStorage, private toastr: ToastrService) {
@@ -35,29 +35,38 @@ export class FormularioComponent {
   onUpload(evento) {
     const id = Math.random().toString(36).substring(2);
     const file = evento.target.files[0];
-    const filePath = `uploads/${id}`;
+    const filePath = `gafasTarjetas/${id}`;
     const ref = this.almacenamiento.ref(filePath);
     const task = this.almacenamiento.upload(filePath, file);
-    task.snapshotChanges().pipe(
-      finalize(() => {
-        this.downloadURL = ref.getDownloadURL()
-      })
-    ).subscribe();
+
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          ref.getDownloadURL().subscribe(downloadURL => {
+            this.foo.push(downloadURL);
+            this.formulario.patchValue({ url: this.foo[0] });
+          });
+        })
+      )
+      .subscribe();
+
+
 
   }
 
   onSubmit() {
-
     if (this.formulario.valid) {
+      this.foo[0] = null;
+      console.log(this.foo);
       console.log(this.formulario.value);
-      console.log(this.downloadURL);
-      // this.dbData.agregarGafas(this.formulario.value);
-      // this.formulario.reset();
-      // this.toastr.success('Se ha agregado un nuevo item', 'Enhora buena');
-
-
+      this.dbData.agregarGafas(this.formulario.value);
+      this.formulario.reset();
+      this.toastr.success('Se ha agregado un nuevo item', 'Enhora buena');
     } else {
-      console.log('Falta level bro...');
+      console.log('Error al enviar información');
+      console.log(this.foo);
+      console.log(this.formulario.value);
     }
 
   }

@@ -5,8 +5,8 @@ import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 const routes: Routes = [
   { path: 'formulario', component: FormularioComponent },
-  { path: 'listado', component: TablaComponent },
-  { path: 'listadito', component: TarjetasComponent },
+  { path: 'listado', component: TarjetasComponent },
+  { path: 'listadito', component: TablaComponent },
   { path: '**', component: TarjetasComponent }
 ];
 

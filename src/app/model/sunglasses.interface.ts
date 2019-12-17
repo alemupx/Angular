@@ -3,4 +3,5 @@ export interface Sunglasses {
     title: String,
     subtitle: String,
     description: String,    
+    url: String,    
 }

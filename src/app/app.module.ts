@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { NavegadorComponent } from './components/navegador/navegador.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
-import { DialogComponent } from './components/dialog/dialog.component';
+
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,8 +52,7 @@ import { MatSortModule } from '@angular/material/sort';
     AppComponent,
     FormularioComponent,
     NavegadorComponent,
-    TarjetasComponent,
-    DialogComponent,
+    TarjetasComponent,    
     TablaComponent,
 
   ],

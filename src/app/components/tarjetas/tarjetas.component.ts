@@ -18,13 +18,11 @@ export class TarjetasComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private servicio: DataDbService) { }
 
-  ngOnInit() {
-    console.log('La que te pario');
+  ngOnInit() {    
     this.servicio.traerGafas().subscribe(accion => {
       this.lista = accion.map(item => {
         return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
       });
-
 
       this.lista.forEach(element => {
         let tarjetaTemporal = {} as Tarjeta;
@@ -33,12 +31,9 @@ export class TarjetasComponent {
         tarjetaTemporal.rows = 2;
         tarjetaTemporal.subtitle = element.subtitle;
         tarjetaTemporal.description = element.description;
-        tarjetaTemporal.src = '1.jpg';
+        tarjetaTemporal.src = element.url;
         this.tarjetas.push(tarjetaTemporal);
-
       });
-
-
 
     })
 

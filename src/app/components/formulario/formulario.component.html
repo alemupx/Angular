@@ -47,7 +47,7 @@
 
             <div class="row">
                 <div class="full-width">
-                    <input placeholder="Seleccione la imagen..." formControlName="image" accept="image/*" (change)="onUpload($event)" type="file">
+                    <input placeholder="Seleccione la imagen..." formControlName="image" accept=".jpg, .png" (change)="onUpload($event)" type="file">
                     <mat-error *ngIf="formulario.controls['image'].hasError('required')">
                         La imagen es <strong>requerida</strong>
                     </mat-error>
