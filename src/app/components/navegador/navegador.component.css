@@ -20,6 +20,21 @@
     flex: 1 1 auto;
 }
 
+.router {
+    /* position: relative; */
+    /* z-index: 1;*/
+    display: block;
+    margin: 100px 1px 100px 1px;
+    /* overflow: auto; */
+}
+
+.foot {
+    background: crimson;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
 @media(min-width: 957px) {
     #titulo {
         margin-left: 15px;

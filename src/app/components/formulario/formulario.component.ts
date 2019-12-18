@@ -38,14 +38,12 @@ export class FormularioComponent {
     const filePath = `gafasTarjetas/${id}`;
     const ref = this.almacenamiento.ref(filePath);
     const task = this.almacenamiento.upload(filePath, file);
-
     task
       .snapshotChanges()
       .pipe(
         finalize(() => {
           ref.getDownloadURL().subscribe(downloadURL => {
-            this.foo.push(downloadURL);
-            this.formulario.patchValue({ url: this.foo[0] });
+            this.foo.push(downloadURL);                        
           });
         })
       )
@@ -56,18 +54,26 @@ export class FormularioComponent {
   }
 
   onSubmit() {
+    // this.formulario.patchValue({ title: "1" });
+    // this.formulario.patchValue({ subtitle: "Lorem" });
+    // this.formulario.patchValue({ description: "Ipsum" });
+    // this.formulario.patchValue({ image: "C:\fakepath\1.jpg"});
+    this.formulario.patchValue({ url: this.foo[0] });
+    console.log(this.formulario.value);
+
+
     if (this.formulario.valid) {
-      this.foo[0] = null;
       console.log(this.foo);
       console.log(this.formulario.value);
       this.dbData.agregarGafas(this.formulario.value);
+      // this.foo[0] = null;
       this.formulario.reset();
       this.toastr.success('Se ha agregado un nuevo item', 'Enhora buena');
-    } else {
-      console.log('Error al enviar información');
-      console.log(this.foo);
-      console.log(this.formulario.value);
-    }
+    } else {}
+    //   console.log('Error al enviar información');
+    //   console.log(this.foo[0]);
+    //   console.log(this.formulario.value);
+    // }
 
   }
 }

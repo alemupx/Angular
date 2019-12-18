@@ -45,6 +45,7 @@ import { TablaComponent } from './components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { MatSortModule } from '@angular/material/sort';
     FormularioComponent,
     NavegadorComponent,
     TarjetasComponent,    
-    TablaComponent,
+    TablaComponent, FooterComponent,
 
   ],
   imports: [
