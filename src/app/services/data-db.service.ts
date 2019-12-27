@@ -22,4 +22,8 @@ export class DataDbService {
   agregarGafas(gafas: Sunglasses): void {
     this.coleccionGafas.add(gafas);
   }
+
+  eliminarGafas(){
+    
+  }
 }

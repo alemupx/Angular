@@ -4,5 +4,5 @@ export interface Tarjeta {
     rows:2,
     subtitle: String,
     description: String,    
-    src: String,    
+    src: any,    
 }

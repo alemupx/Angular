@@ -3,8 +3,7 @@
     <mat-sidenav #drawer class="sidenav" fixedInViewport>
         <mat-toolbar style="color: white;">Menu</mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item routerLink="/formulario">Agregar</a>
-            <a mat-list-item routerLink="/listado">Listado</a>
+            <a mat-list-item routerLink="/add-sunglasses">Agregar</a>
 
         </mat-nav-list>
     </mat-sidenav>
@@ -13,7 +12,7 @@
 
         <mat-toolbar color="primary">
 
-            <span id="titulo">Street</span>
+            <a routerLink="/index"><span id="titulo">Street</span></a>
 
             <div class="espaciador"></div>
 
@@ -27,9 +26,9 @@
             <router-outlet></router-outlet>
         </div>
 
-        <div class="foot">
-            <ifooter></ifooter>
-        </div>
+        <ifooter></ifooter>
+        <!-- <div class="foot">
+        </div> -->
     </mat-sidenav-content>
 
 

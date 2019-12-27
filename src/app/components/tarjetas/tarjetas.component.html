@@ -12,8 +12,8 @@
               <mat-icon>more_vert</mat-icon>
             </button>
                         <mat-menu #menu="matMenu" xPosition="before">
-                            <button mat-menu-item>Editar</button>
-                            <button mat-menu-item>Eliminar</button>
+                            <!-- <button mat-menu-item>Editar</button> -->
+                            <button mat-menu-item (click)="eliminar()">Eliminar</button>
                         </mat-menu>
                     </mat-card-title>
 

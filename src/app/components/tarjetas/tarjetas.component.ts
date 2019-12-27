@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { DataDbService } from 'src/app/servicios/data-db.service';
+import { DataDbService } from 'src/app/services/data-db.service';
 import { Sunglasses } from 'src/app/model/sunglasses.interface';
 import { Tarjeta } from 'src/app/model/tarjeta.interface';
 
@@ -45,5 +45,11 @@ export class TarjetasComponent {
       return this.tarjetas;
     })
   );
+
+  eliminar(){
+    this.servicio.eliminarGafas();
+    // alert('Vas a eliminar a tu mamá?');
+    // console.log('Menor, vas a eliminar a tu cucha?');
+  }
 
 }

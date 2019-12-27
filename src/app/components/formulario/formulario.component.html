@@ -36,15 +36,6 @@
                 </mat-form-field>
             </div>
 
-            <!-- <div class="row">
-                <mat-form-field class="full-width">
-                    <ngx-mat-file-input placeholder="Seleccione la imagen..." formControlName="image" accept=".jp, , .png," (change)="onUpload($event)"></ngx-mat-file-input>
-                    <mat-error *ngIf="formulario.controls['image'].hasError('required')">
-                        La imagen es <strong>requerida</strong>
-                    </mat-error>
-                </mat-form-field>
-            </div> -->
-
             <div class="row">
                 <div class="full-width">
                     <input placeholder="Seleccione la imagen..." formControlName="image" accept=".jpg, .png" (change)="onUpload($event)" type="file">
@@ -53,10 +44,6 @@
                     </mat-error>
                 </div>
             </div>
-
-
-
-
 
 
         </mat-card-content>

@@ -6,6 +6,11 @@
     width: 200px;
 }
 
+a {
+    color: white;
+    text-decoration: none !important;
+}
+
 .sidenav .mat-toolbar {
     background: #212121;
 }
@@ -23,16 +28,16 @@
 .router {
     /* position: relative; */
     /* z-index: 1;*/
-    display: block;
-    margin: 100px 1px 100px 1px;
+    /* display: block; */
+    /* margin: 100px 1px 100px 1px; */
     /* overflow: auto; */
+    display: contents;
+    height: 100%;
 }
 
 .foot {
-    background: crimson;
     position: sticky;
-    bottom: 0;
-    z-index: 1;
+    bottom: auto;
 }
 
 @media(min-width: 957px) {

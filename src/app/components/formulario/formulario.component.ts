@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { DataDbService } from '../../servicios/data-db.service'
+import { DataDbService } from '../../services/data-db.service'
 import { ToastrService } from 'ngx-toastr'
 import { AngularFireStorage } from '@angular/fire/storage'
 import { finalize } from 'rxjs/operators';

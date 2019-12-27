@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
 import { NavegadorComponent } from './components/navegador/navegador.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 
 
@@ -31,6 +31,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
+//Notificaciones
 import { ToastrModule } from 'ngx-toastr';
 
 
@@ -40,12 +41,17 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { environment } from '../environments/environment';
-import { DataDbService } from './servicios/data-db.service';
-import { TablaComponent } from './components/tabla/tabla.component';
+import { DataDbService } from './services/data-db.service';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { FooterComponent } from './components/footer/footer.component';
+import { IndexComponent } from './views/index/index.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { AddSunglassesComponent } from './views/add-sunglasses/add-sunglasses.component'
+import { WaitForPic } from './pipes/waitForPic.pipe';
+
 
 
 @NgModule({
@@ -53,8 +59,9 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     FormularioComponent,
     NavegadorComponent,
-    TarjetasComponent,    
-    TablaComponent, FooterComponent,
+    TarjetasComponent, 
+    WaitForPic, 
+    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent,
 
   ],
   imports: [
@@ -84,7 +91,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatCarouselModule.forRoot(),
 
 
   ],

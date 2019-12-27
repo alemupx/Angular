@@ -1,0 +1,5 @@
+<mat-carousel color="warn" maxWidth="auto" proportion="45" [hideIndicators]="false" [hideArrows]="false">
+    <mat-carousel-slide *ngFor="let item of cards | async" [image]="item.src">
+
+    </mat-carousel-slide>
+</mat-carousel>

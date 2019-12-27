@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormularioComponent } from './components/formulario/formulario.component';
-import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
-import { TablaComponent } from './components/tabla/tabla.component';
+import { IndexComponent } from './views/index/index.component';
+import { AddSunglassesComponent } from './views/add-sunglasses/add-sunglasses.component';
 const routes: Routes = [
-  { path: 'formulario', component: FormularioComponent },
-  { path: 'listado', component: TarjetasComponent },
-  { path: 'listadito', component: TablaComponent },
-  { path: '**', component: TarjetasComponent }
+  { path: 'index', component: IndexComponent },
+  { path: 'add-sunglasses', component: AddSunglassesComponent },
+  { path: '**', component: IndexComponent }
 ];
 
 @NgModule({
@@ -15,4 +13,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
 
