@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { DataDbService } from 'src/app/services/data-db.service';
-import { Sunglasses } from 'src/app/model/sunglasses.interface';
-import { Tarjeta } from 'src/app/model/tarjeta.interface';
+import { Sunglasses } from 'src/app/models/sunglasses.interface';
+import { Tarjeta } from 'src/app/models/tarjeta.interface';
 
 @Component({
-  selector: 'app-tarjetas',
+  selector: 'tarjetas',
   templateUrl: './tarjetas.component.html',
   styleUrls: ['./tarjetas.component.css']
 })
@@ -16,16 +16,26 @@ export class TarjetasComponent {
   lista: Sunglasses[];
   tarjetas: Tarjeta[] = [];
 
+
+
   constructor(private breakpointObserver: BreakpointObserver, private servicio: DataDbService) { }
 
-  ngOnInit() {    
+  ngOnInit() {
+    
+
+
+    let identificacion = '';
     this.servicio.traerGafas().subscribe(accion => {
       this.lista = accion.map(item => {
         return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
       });
 
+      console.log('ngOnInit Tarjetas');
+      console.log(this.lista);
+
       this.lista.forEach(element => {
         let tarjetaTemporal = {} as Tarjeta;
+        tarjetaTemporal.id = element.id;
         tarjetaTemporal.title = element.title;
         tarjetaTemporal.cols = 2;
         tarjetaTemporal.rows = 2;
@@ -46,10 +56,8 @@ export class TarjetasComponent {
     })
   );
 
-  eliminar(){
-    this.servicio.eliminarGafas();
-    // alert('Vas a eliminar a tu mamá?');
-    // console.log('Menor, vas a eliminar a tu cucha?');
+  eliminar(id) {
+    this.servicio.eliminarGafas(id);
   }
 
 }

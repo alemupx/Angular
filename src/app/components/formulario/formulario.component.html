@@ -38,10 +38,16 @@
 
             <div class="row">
                 <div class="full-width">
-                    <input placeholder="Seleccione la imagen..." formControlName="image" accept=".jpg, .png" (change)="onUpload($event)" type="file">
+                    <!-- <input placeholder="Seleccione la imagen..." formControlName="image" accept=".jpg, .png" (change)="onUpload($event)" type="file"> -->
+                    <button type="button" mat-raised-button (click)="fileInput.click($event)">Seleccionar archivo</button>
+
+                    <input hidden (change)="onUpload($event)" formControlName="image" #fileInput type="file" id="file">
                     <mat-error *ngIf="formulario.controls['image'].hasError('required')">
                         La imagen es <strong>requerida</strong>
                     </mat-error>
+
+
+
                 </div>
             </div>
 
@@ -52,3 +58,25 @@
         </mat-card-actions>
     </mat-card>
 </form>
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+
+                <th>
+                    Eliminar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of stream | async as list">
+
+            </tr>
+        </tbody>
+    </table>
+</div>

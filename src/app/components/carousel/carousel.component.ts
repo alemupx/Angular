@@ -3,8 +3,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 
 import { DataDbService } from 'src/app/services/data-db.service';
-import { Sunglasses } from 'src/app/model/sunglasses.interface';
-import { Tarjeta } from 'src/app/model/tarjeta.interface';
+import { Sunglasses } from 'src/app/models/sunglasses.interface';
+import { Tarjeta } from 'src/app/models/tarjeta.interface';
 
 
 @Component({
@@ -36,6 +36,7 @@ export class CarouselComponent implements OnInit {
 
         this.lista.forEach(element => {
           let tarjetaTemporal = {} as Tarjeta;
+          tarjetaTemporal.id = element.id;
           tarjetaTemporal.title = element.title;
           tarjetaTemporal.cols = 2;
           tarjetaTemporal.rows = 2;
@@ -50,13 +51,16 @@ export class CarouselComponent implements OnInit {
 
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ }) => {
-
       return this.tarjetas;
     })
   );
 
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
+  }
+
+  eliminar(id) {
+    this.servicio.eliminarGafas(id);
   }
 
 }
