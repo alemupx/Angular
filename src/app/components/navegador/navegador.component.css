@@ -1,3 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    height: 40px;
+    margin-bottom: 2px;
+}
+
 .sidenav-container {
     height: 100%;
 }
@@ -21,23 +32,17 @@ a {
     z-index: 1;
 }
 
-.espaciador {
+.mat-list-base {
+    padding: 0px;
+}
+
+.espaciadorNavegador {
     flex: 1 1 auto;
 }
 
 .router {
-    /* position: relative; */
-    /* z-index: 1;*/
-    /* display: block; */
-    /* margin: 100px 1px 100px 1px; */
-    /* overflow: auto; */
     display: contents;
     height: 100%;
-}
-
-.foot {
-    position: sticky;
-    bottom: auto;
 }
 
 @media(min-width: 957px) {

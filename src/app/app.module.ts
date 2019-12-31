@@ -31,6 +31,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
+
 //Notificaciones
 import { ToastrModule } from 'ngx-toastr';
 
@@ -51,6 +52,8 @@ import { IndexComponent } from './views/index/index.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { AddSunglassesComponent } from './views/add-sunglasses/add-sunglasses.component'
 import { WaitForPic } from './pipes/waitForPic.pipe';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ContactUsComponent } from './views/contact-us/contact-us.component';
 
 
 
@@ -61,7 +64,7 @@ import { WaitForPic } from './pipes/waitForPic.pipe';
     NavegadorComponent,
     TarjetasComponent, 
     WaitForPic, 
-    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent,
+    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent, ContactUsComponent,
 
   ],
   imports: [
@@ -78,6 +81,7 @@ import { WaitForPic } from './pipes/waitForPic.pipe';
     ReactiveFormsModule,
     LayoutModule,
     MatToolbarModule,
+    FlexLayoutModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
