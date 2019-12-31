@@ -54,6 +54,7 @@ import { AddSunglassesComponent } from './views/add-sunglasses/add-sunglasses.co
 import { WaitForPic } from './pipes/waitForPic.pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactUsComponent } from './views/contact-us/contact-us.component';
+import { ContactUsFormComponent } from './components/contact-us-form/contact-us-form.component';
 
 
 
@@ -64,7 +65,7 @@ import { ContactUsComponent } from './views/contact-us/contact-us.component';
     NavegadorComponent,
     TarjetasComponent, 
     WaitForPic, 
-    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent, ContactUsComponent,
+    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent, ContactUsComponent, ContactUsFormComponent,
 
   ],
   imports: [
