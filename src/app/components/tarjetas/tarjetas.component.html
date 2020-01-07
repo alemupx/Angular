@@ -1,6 +1,7 @@
 <div class="grid-container">
     <!-- <h1 class="mat-display-2">Inventario</h1> -->
-    <mat-grid-list cols="2" rowHeight="350px">
+
+    <mat-grid-list cols="4" rowHeight="350px">
 
         <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
             <mat-card class="example-card mat-elevation-z4">
@@ -30,4 +31,8 @@
         </mat-grid-tile>
 
     </mat-grid-list>
+
+    <div style="display: flex; justify-content: center;">
+        <button style="width: 80%;" type="button" color="accent" mat-raised-button routerLink="/add-sunglasses">Añadir</button>
+    </div>
 </div>

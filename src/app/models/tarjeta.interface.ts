@@ -1,8 +1,8 @@
 export interface Tarjeta {    
     id:number,
     title: String,
-    cols:2,
-    rows:2,
+    cols:number,
+    rows:number,
     subtitle: String,
     description: String,    
     src: any,    

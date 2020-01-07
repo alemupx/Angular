@@ -78,8 +78,6 @@ export class FormularioComponent {
                 this.barType = 'determinate';
                 this.barValue = 100;
                 this.toastr.info('Presiona el boton Añadir', 'Ya casí acabamos!');
-
-
               });
             })
           )

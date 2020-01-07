@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { DataDbService } from 'src/app/services/data-db.service';
 import { Sunglasses } from 'src/app/models/sunglasses.interface';
 import { Tarjeta } from 'src/app/models/tarjeta.interface';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'tarjetas',
@@ -18,11 +20,9 @@ export class TarjetasComponent {
 
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private servicio: DataDbService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private servicio: DataDbService, private ventaEmergente: ToastrService) { }
 
   ngOnInit() {
-    
-
 
     let identificacion = '';
     this.servicio.traerGafas().subscribe(accion => {
@@ -57,7 +57,21 @@ export class TarjetasComponent {
   );
 
   eliminar(id) {
-    this.servicio.eliminarGafas(id);
+
+    var promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          this.servicio.eliminarGafas(id);
+          this.ventaEmergente.success('Se ha eliminado correctamente el item', 'Eliminado');
+
+        } catch (error) {
+          this.ventaEmergente.warning('No se ha podido eliminar el item', 'Error');
+
+        }
+        resolve();
+      }, 1000);
+    });
+
   }
 
 }
