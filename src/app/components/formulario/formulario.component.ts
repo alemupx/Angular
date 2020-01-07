@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Validators, FormGroup, FormControl, AbstractControl } from '@angular/forms';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { DataDbService } from '../../services/data-db.service'
 import { ToastrService } from 'ngx-toastr'
 import { AngularFireStorage } from '@angular/fire/storage'
 import { finalize } from 'rxjs/operators';
+
 
 
 @Component({
@@ -22,6 +23,8 @@ export class FormularioComponent {
       url: new FormControl('', Validators.required),
       image: new FormControl('', Validators.required),
     });
+
+
   }
 
 
@@ -29,10 +32,19 @@ export class FormularioComponent {
   image: any;
   foo: any;
 
+  barType: string;
+  barValue: number;
+
 
   constructor(private dbData: DataDbService, private almacenamiento: AngularFireStorage, private toastr: ToastrService) {
     this.formulario = this.createFormGroup();
+    this.barValue = 0;
+    this.barType = 'determinate';
   }
+
+
+
+
 
 
   ngOnInit() {
@@ -42,12 +54,16 @@ export class FormularioComponent {
   }
 
   onUpload(evento) {
+
+    this.barValue = 0;
+    this.barType = 'indeterminate';
     const file = evento.target.files[0];
     this.image = file;
     this.formulario.patchValue({ url: file });
 
     var promise = new Promise((resolve, reject) => {
       setTimeout(() => {
+
         const id = Math.random().toString(36).substring(2);
         const filePath = `gafasTarjetas/${id}`;
         const ref = this.almacenamiento.ref(filePath);
@@ -59,6 +75,11 @@ export class FormularioComponent {
               ref.getDownloadURL().subscribe(downloadURL => {
                 this.formulario.patchValue({ url: downloadURL });
                 console.log(this.formulario.value);
+                this.barType = 'determinate';
+                this.barValue = 100;
+                this.toastr.info('Presiona el boton Añadir', 'Ya casí acabamos!');
+
+
               });
             })
           )
@@ -84,6 +105,7 @@ export class FormularioComponent {
       this.dbData.agregarGafas(this.formulario.value);
       this.formulario.reset();
       this.toastr.success('Se ha agregado un nuevo item', 'Enhora buena');
+      this.barValue = 0;
     }
 
   }

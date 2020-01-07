@@ -24,6 +24,7 @@ import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule } from '@a
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -55,6 +56,7 @@ import { WaitForPic } from './pipes/waitForPic.pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactUsComponent } from './views/contact-us/contact-us.component';
 import { ContactUsFormComponent } from './components/contact-us-form/contact-us-form.component';
+import { AboutUsComponent } from './views/about-us/about-us.component';
 
 
 
@@ -63,9 +65,9 @@ import { ContactUsFormComponent } from './components/contact-us-form/contact-us-
     AppComponent,
     FormularioComponent,
     NavegadorComponent,
-    TarjetasComponent, 
-    WaitForPic, 
-    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent, ContactUsComponent, ContactUsFormComponent,
+    TarjetasComponent,
+    WaitForPic,
+    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent, ContactUsComponent, ContactUsFormComponent, AboutUsComponent,
 
   ],
   imports: [
@@ -96,7 +98,7 @@ import { ContactUsFormComponent } from './components/contact-us-form/contact-us-
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    AngularFireStorageModule,
+    AngularFireStorageModule, MatProgressBarModule,
     MatCarouselModule.forRoot(),
 
 

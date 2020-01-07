@@ -40,11 +40,14 @@
                 <div class="full-width">
                     <!-- <input placeholder="Seleccione la imagen..." formControlName="image" accept=".jpg, .png" (change)="onUpload($event)" type="file"> -->
                     <button type="button" mat-raised-button (click)="fileInput.click($event)">Seleccionar archivo</button>
-
                     <input hidden (change)="onUpload($event)" formControlName="image" #fileInput type="file" id="file">
                     <mat-error *ngIf="formulario.controls['image'].hasError('required')">
                         La imagen es <strong>requerida</strong>
                     </mat-error>
+
+                    <br><br>
+                    <mat-progress-bar color="accent" mode={{barType}} value={{barValue}}></mat-progress-bar>
+
 
                 </div>
             </div>
