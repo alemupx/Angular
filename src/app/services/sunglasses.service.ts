@@ -6,7 +6,7 @@ import { Sunglasses } from '../models/sunglasses.interface'
   providedIn: 'root'
 })
 
-export class DataDbService {
+export class SunglassesService {
 
 
   private coleccionGafas: AngularFirestoreCollection<Sunglasses>;
@@ -16,11 +16,10 @@ export class DataDbService {
   }
 
   traerGafas() {
-    return this.firestore.collection('Gafas').snapshotChanges(); 
-    
+    return this.firestore.collection('Gafas').snapshotChanges();
   }
 
-  getArray(){
+  getArray() {
     return this.firestore.collection('Gafas');
 
   }
@@ -29,11 +28,11 @@ export class DataDbService {
     this.coleccionGafas.add(gafas);
   }
 
-  eliminarGafas(id){
-    this.firestore.collection('Gafas').doc(id).delete().then(function() {
+  eliminarGafas(id) {
+    this.firestore.collection('Gafas').doc(id).delete().then(function () {
       console.log("Document successfully deleted!");
-  }).catch(function(error) {
+    }).catch(function (error) {
       console.error("Error removing document: ", error);
-  });
+    });
   }
 }

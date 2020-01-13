@@ -1,7 +1,5 @@
-.contenedorPrincipal {
-    margin: 20px;
+.mat-card-specimen {
+    margin: 5em 1em;
 }
 
-mat-carousel {
-    height: 1000px;
-}
+mat-carousel {}

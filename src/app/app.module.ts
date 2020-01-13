@@ -1,22 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-
-
-import { AppRoutingModule } from './app-routing.module';
+//Tools
 import { AppComponent } from './app.component';
-import { NavegadorComponent } from './components/navegador/navegador.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
-import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
-
-
-
+import { AppRoutingModule } from './app-routing.module';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http'
+
+//Components
+import { NavegadorComponent } from './components/navegador/navegador.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
+
+//Views
+import { IndexComponent } from './views/index/index.component';
+import { AddSunglassesComponent } from './views/add-sunglasses/add-sunglasses.component'
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ContactUsComponent } from './views/contact-us/contact-us.component';
+import { AboutUsComponent } from './views/about-us/about-us.component';
+import { SignUpComponent } from './views/sign-up/sign-up.component';
+
 
 //Material
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,6 +39,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 //Notificaciones
@@ -42,39 +53,33 @@ import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage'
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { DataDbService } from './services/data-db.service';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
 
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { IndexComponent } from './views/index/index.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { AddSunglassesComponent } from './views/add-sunglasses/add-sunglasses.component'
+
+//Pipe
 import { WaitForPic } from './pipes/waitForPic.pipe';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ContactUsComponent } from './views/contact-us/contact-us.component';
-import { ContactUsFormComponent } from './components/contact-us-form/contact-us-form.component';
-import { AboutUsComponent } from './views/about-us/about-us.component';
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioComponent,
     NavegadorComponent,
     TarjetasComponent,
     WaitForPic,
-    FooterComponent, IndexComponent, CarouselComponent, AddSunglassesComponent, ContactUsComponent, ContactUsFormComponent, AboutUsComponent,
+    FooterComponent,
+    IndexComponent,
+    CarouselComponent,
+    AddSunglassesComponent,
+    ContactUsComponent,
+    AboutUsComponent,
+    SignUpComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -90,20 +95,21 @@ import { AboutUsComponent } from './views/about-us/about-us.component';
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
     MatGridListModule,
     MatMenuModule,
     MaterialFileInputModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    AngularFireStorageModule, MatProgressBarModule,
+    ToastrModule.forRoot(),
     MatCarouselModule.forRoot(),
-
-
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule, MatProgressBarModule,
+    AngularFireAuthModule,
+    HttpClientModule,
   ],
-  providers: [DataDbService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

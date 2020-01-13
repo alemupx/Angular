@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { DataDbService } from 'src/app/services/data-db.service';
+import { SunglassesService } from 'src/app/services/sunglasses.service';
 import { Sunglasses } from 'src/app/models/sunglasses.interface';
 import { Tarjeta } from 'src/app/models/tarjeta.interface';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ export class TarjetasComponent {
 
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private servicio: DataDbService, private ventaEmergente: ToastrService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private servicio: SunglassesService, private ventaEmergente: ToastrService) { }
 
   ngOnInit() {
 

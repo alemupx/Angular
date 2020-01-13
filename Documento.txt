@@ -1,0 +1,6 @@
+Street Appareal & Accesories. 
+Marca de accesorios, gafas y ropa requiere aplicación web que le permita mostrar sus productos, generar registros de pedidos, administrar los items en stock.
+
+Requerimientos funcionales.
+
+Requerimientos no funcionales.

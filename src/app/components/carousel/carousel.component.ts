@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 
-import { DataDbService } from 'src/app/services/data-db.service';
+import { SunglassesService } from 'src/app/services/sunglasses.service';
 import { Sunglasses } from 'src/app/models/sunglasses.interface';
 import { Tarjeta } from 'src/app/models/tarjeta.interface';
 
@@ -18,7 +18,7 @@ export class CarouselComponent implements OnInit {
   lista: Sunglasses[];
   tarjetas: Tarjeta[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private breakpointObserver: BreakpointObserver, private servicio: DataDbService) { }
+  constructor(private cdr: ChangeDetectorRef, private breakpointObserver: BreakpointObserver, private servicio: SunglassesService) { }
 
 
   ngOnInit() {
