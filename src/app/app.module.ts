@@ -59,6 +59,7 @@ import { environment } from '../environments/environment';
 
 //Pipe
 import { WaitForPic } from './pipes/waitForPic.pipe';
+import { SignOnComponent } from './views/sign-on/sign-on.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { WaitForPic } from './pipes/waitForPic.pipe';
     ContactUsComponent,
     AboutUsComponent,
     SignUpComponent,
+    SignOnComponent,
 
   ],
   imports: [
@@ -107,7 +109,7 @@ import { WaitForPic } from './pipes/waitForPic.pipe';
     AngularFirestoreModule,
     AngularFireStorageModule, MatProgressBarModule,
     AngularFireAuthModule,
-    HttpClientModule,
+    HttpClientModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]

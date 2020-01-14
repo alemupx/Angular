@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
 @Injectable({
   providedIn: 'root'
 })
 
 export class SignUpService {
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, public router: Router) {
 
   }
 
@@ -20,10 +21,12 @@ export class SignUpService {
       let provider = new firebase.auth.GoogleAuthProvider();
       provider.addScope('profile');
       provider.addScope('email');
-      this.afAuth.auth
-        .signInWithPopup(provider)
+      this.afAuth.auth.signInWithPopup(provider)
         .then(res => {
           resolve(res);
+
+        }).catch(error => {
+          console.log('Error al intentar conectarse con Google.')
         })
     })
   }
