@@ -1,9 +1,7 @@
-    .piePagina {
-        text-align: center;
-        color: white;
-        background-color: #212121;
-    }
-    
-    #textoPie {
-        margin: 0px;
-    }
+footer {
+  bottom: 0;
+  position: relative;
+  width: 100%;
+  background-color: rgb(77, 31, 3);
+}
+

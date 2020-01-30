@@ -1,0 +1,12 @@
+<div class="animated fadeIn fast" *ngFor="let item of sunglassesList">
+    <h2>{{item.title | uppercase}}</h2>
+    <small>{{item.subtitle}}</small>
+    <hr>
+    <div class="container">
+        <p>
+            {{item.description}}
+        </p>
+        <img class="img-fluid" [src]="item.url" [alt]="">
+    </div>
+
+</div>
