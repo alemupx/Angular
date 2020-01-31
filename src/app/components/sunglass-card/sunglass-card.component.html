@@ -1,0 +1,8 @@
+<div class="card animated fadeIn fast">
+    <img class="card-img-top img-fluid" [src]="sunglass.url" [alt]="sunglass.title">
+    <div class="card-body">
+        <h5 class="card-title">{{sunglass.title}}</h5>
+        <p class="card-text"><small class="text-muted">{{sunglass.description}}</small></p>
+        <button (click)="viewSunglasses()" class="btn btn-outline-primary btn-block">Ver más...</button>
+    </div>
+</div>

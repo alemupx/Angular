@@ -4,7 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+
 
 //Material
 import { MatIconModule } from '@angular/material/icon';
@@ -24,16 +26,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { SunglassesComponent } from './components/sunglasses/sunglasses.component';
-
-//Services
-
-import { SunglassesService } from './services/sunglasses.service';
 import { SunglassComponent } from './components/sunglass/sunglass.component';
 import { SearchComponent } from './components/search/search.component';
-
-
-
-
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { SunglassCardComponent } from './components/sunglass-card/sunglass-card.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -45,6 +43,10 @@ import { SearchComponent } from './components/search/search.component';
     SunglassesComponent,
     SunglassComponent,
     SearchComponent,
+    AboutUsComponent,
+    SunglassCardComponent,
+    LoginComponent,
+    RegistroComponent
 
   ],
   imports: [
@@ -59,6 +61,7 @@ import { SearchComponent } from './components/search/search.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

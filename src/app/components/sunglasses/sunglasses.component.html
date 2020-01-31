@@ -1,12 +1,8 @@
-<h1>Sunglasses <small>gallery</small></h1>
+<h1>Gafas</h1>
 <hr>
 <div class="card-columns">
-    <div class="card  animated fadeIn fast" *ngFor="let gafa of sunglassesList; let i=index">
-        <img class="card-img-top img-fluid" [src]="gafa.url" [alt]="gafa.title">
-        <div class="card-body">
-            <h5 class="card-title">{{gafa.title}}</h5>
-            <p class="card-text"><small class="text-muted">{{gafa.description}}</small></p>
-            <button (click)="viewSunglasses(gafa.id)" class="btn btn-outline-primary btn-block">Ver más...</button>
-        </div>
-    </div>
+
+    <!-- La etiqueta al estar especializada con un Input permite el envio de variables para trabajar con estas -->
+    <app-sunglass-card [sunglass]="sunglass" [id]="sunglass.id" *ngFor="let sunglass of sunglassesList; let i=index">
+    </app-sunglass-card>
 </div>

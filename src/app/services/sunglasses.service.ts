@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +16,6 @@ export class SunglassesService {
     this.coleccionGafas = firestore.collection<Sunglasses>('Gafas');
   }
 
-
-
   agregarGafas(gafas: Sunglasses): void {
     this.coleccionGafas.add(gafas);
   }
@@ -30,8 +27,6 @@ export class SunglassesService {
       console.error("Error removing document: ", error);
     });
   }
-
-
 
   traerGafas() {
     return this.firestore.collection('Gafas').snapshotChanges();
@@ -63,25 +58,21 @@ export class SunglassesService {
     return gafasTemporales;
   }
 
-  buscarGafas(termino: string): Sunglasses[]{
+  buscarGafas(termino: string): Sunglasses[] {
 
     let sunglassesList: Sunglasses[] = [];
 
     this.traerGafas().subscribe(accion => {
 
-      //La lista luego de mapear el item recibe todos los elementos un Array
+      //La lista luego de mapear el item recibe todos los elementos eun Array
       this.sunglassesList = accion.map(item => {
         return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
       });
 
-      //Recorre ese array para obtener cada elemento y así       
+      //Recorre ese array para obtener cada elemento y así compararlo hasta encontrar el termino.
       this.sunglassesList.forEach(element => {
 
-        // if (termino.toLowerCase().indexOf(element.title.toLowerCase()) >= 0) {        
-        //   sunglassesList.push(this.traerGafa(element.id));
-        // }
-        
-        if (element.title.toLowerCase().indexOf(termino.toLowerCase()) >= 0) {        
+        if (element.title.toLowerCase().indexOf(termino.toLowerCase()) >= 0) {
           sunglassesList.push(this.traerGafa(element.id));
         }
       });
@@ -89,9 +80,8 @@ export class SunglassesService {
     });
 
     return sunglassesList;
-    
-  }
 
+  }
 
 }
 

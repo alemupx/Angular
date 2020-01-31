@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SunglassesService, Sunglasses } from 'src/app/services/sunglasses.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class HomeComponent implements OnInit {
         return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
       });
     });
+
+
   }
 
 }
