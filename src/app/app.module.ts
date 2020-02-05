@@ -1,5 +1,4 @@
-//Tools
-import { AppComponent } from './app.component';
+//Modules
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http'
 
 
 //Material
-import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule, MatIconModule } from '@angular/material/';
+
 
 //Notificaciones
 import { ToastrModule } from 'ngx-toastr';
@@ -22,7 +22,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 //Components
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { SunglassesComponent } from './components/sunglasses/sunglasses.component';
@@ -32,12 +32,17 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SunglassCardComponent } from './components/sunglass-card/sunglass-card.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { AddSunglassesComponent } from './components/forms/add-sunglasses/add-sunglasses.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     FooterComponent,
     HomeComponent,
     SunglassesComponent,
@@ -46,7 +51,9 @@ import { RegistroComponent } from './components/registro/registro.component';
     AboutUsComponent,
     SunglassCardComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    AddSunglassesComponent,
+    SidenavComponent
 
   ],
   imports: [
@@ -56,12 +63,17 @@ import { RegistroComponent } from './components/registro/registro.component';
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
+    MatToolbarModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

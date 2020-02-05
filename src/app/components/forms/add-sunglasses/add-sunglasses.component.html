@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <form [formGroup]="formulario" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="form-group row" [ngClass]="{'has-danger': !formulario.controls['title'].valid}">
+
+                <input placeholder="Título" class="form-control" type="text" formControlName="title">
+
+                <div class="animated fadeIn fast" *ngIf="formulario.controls['title'].hasError('required')">
+                    El título es <strong>requerido</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group row">
+                <input placeholder="Subtítulo" class="form-control" type="text" formControlName="subtitle">
+                <div class="animated fadeIn fast" *ngIf="formulario.controls['subtitle'].hasError('required')">
+                    El subtítulo es <strong>requerido</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group row">
+                <input placeholder="Descripción" class="form-control" type="text" formControlName="description">
+
+                <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('minlength')">
+                    La descripción debe contener al menos <strong>15 caracteres</strong>
+                </div>
+                <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('required')">
+                    La descripción es <strong>requerida</strong>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group row">
+                <button type="submit" class="btn btn-outline-primary">
+                    Guardar
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

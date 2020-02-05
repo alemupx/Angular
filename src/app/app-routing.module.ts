@@ -7,6 +7,8 @@ import { SearchComponent } from './components/search/search.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { AddSunglassesComponent } from './components/forms/add-sunglasses/add-sunglasses.component';
+
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'sunglass/:id', component: SunglassComponent },
   { path: 'search/:id', component: SearchComponent },
+  { path: 'add', component: AddSunglassesComponent },
   { path: '**', component: SunglassesComponent },
 ];
 

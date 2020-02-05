@@ -1,6 +1,6 @@
 <div class="limiter animated fadeInLeft">
     <div class="container-login100">
-        <div class="wrap-login100 p-t-50 p-b-90">
+        <div class="wrap-login100 p-t-50 p-b-90" style="background-color: #fafafa;">
             <form #formularioLogin="ngForm" (ngSubmit)="login(formularioLogin)"
                 class="login100-form validate-form flex-sb flex-w">
 
@@ -27,9 +27,10 @@
 
                 <div class="flex-sb-m w-full p-t-3 p-b-24">
                     <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" [(ngModel)]="recordarme">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"
+                            [(ngModel)]="recordarme">
                         <label class=" label-checkbox100" for="ckb1">
-                        Recordar mi usuario
+                            Recordar mi usuario
                         </label>
                     </div>
 
