@@ -131,6 +131,10 @@ export class SunglassesService {
     }
   }
 
+  cargarImagenFB(){
+    
+  }
+
   private guardarImagen(imagen: { title: string, subtitle: string, description: string, url: string }) {
     this.firestore.collection('Gafas').add(imagen);
   }

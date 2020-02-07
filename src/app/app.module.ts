@@ -39,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { AddSunglassesV2Component } from './components/forms/add-sunglasses-v2/add-sunglasses-v2.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     RegistroComponent,
     AddSunglassesComponent,
     SidenavComponent,
-    NgDropFilesDirective
+    NgDropFilesDirective,
+       AddSunglassesV2Component
 
   ],
   imports: [

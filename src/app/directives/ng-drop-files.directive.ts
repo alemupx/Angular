@@ -42,6 +42,23 @@ export class NgDropFilesDirective {
 
   }
 
+  @HostListener('click', ['$event'])
+  public onClick(event: any) {
+    this.mouseSobre.emit(false);
+
+    const transferencia = this._getTransferencia(event);
+
+    if (!transferencia) {
+      return;
+    }
+
+    this._extraerArchivos(transferencia.files);
+    this._prevenirDetener(event);
+    this.mouseSobre.emit(false);
+
+
+  }
+
   private _getTransferencia(event: any) {
     return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
 

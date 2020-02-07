@@ -1,0 +1,93 @@
+<form [formGroup]="formulario" novalidate (ngSubmit)="onSubmit()">
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['title'].valid}">
+
+        <label for="title">Título</label>
+        <input class="form-control" type="text" formControlName="title">
+        <div id="title" class="animated fadeIn fast" *ngIf="formulario.controls['title'].hasError('required')">
+            El título es <strong>requerido</strong>
+        </div>
+    </div>
+
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['subtitle'].valid}">
+
+        <label for="subtitle">Subtítulo</label>
+        <input class="form-control" type="text" formControlName="subtitle">
+        <div id="subtitle" class="animated fadeIn fast" *ngIf="formulario.controls['subtitle'].hasError('required')">
+            El subtítulo es <strong>requerido</strong>
+        </div>
+    </div>
+
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['description'].valid}">
+
+        <label for="description">Descripción</label>
+        <input id="description" class="form-control" type="text" formControlName="description">
+
+        <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('minlength')">
+            La descripción debe contener al menos <strong>15 caracteres</strong>
+        </div>
+        <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('required')">
+            La descripción es <strong>requerida</strong>
+        </div>
+
+    </div>
+
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['image'].valid}">
+        <input hidden (change)="onUpload($event)" formControlName="image" #fileInput type="file" id="file">
+        <div *ngIf="formulario.controls['image'].hasError('required')">
+            La imagen es <strong>requerida</strong>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+
+        <div class="col-md-8">
+            <!-- <h4>Cargar archivo</h4> -->
+            <!-- <button [disabled]="archivos.length==0" (click)="cargarImagenes()" class="btn btn-success mr-3">Cargar a
+                Firebase</button> -->
+
+
+
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr [ngClass]="{'alert alert-success': archivo.progreso>=100}" *ngFor="let archivo of archivos">
+                    <td>{{archivo.name}}</td>
+                    <td>{{archivo.size / 1024 / 1024 | number:'.2-2'}} MB</td>
+                    <td>
+                        <div class=" progress ">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{'width': archivo.progreso + '%' }">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+
+    <!-- <button [disabled]="!this.formulario.valid" type="submit" class="btn btn-primary btn-lg btn-block">
+        Guardar
+    </button> -->
+    <button class="btn btn-primary btn-lg btn-block" type="button" (click)="fileInput.click($event)">Seleccionar
+        archivo</button>
+
+    <button [disabled]="archivos.length == 0 || !this.formulario.valid" (click)="cargarImagenes()" class="btn btn-success btn-lg btn-block">Subir imagen</button>
+
+    <button class=" btn btn-danger btn-lg btn-block" (click)="limpiarArchivos()"> Limpiar</button>
+
+
+</form>
