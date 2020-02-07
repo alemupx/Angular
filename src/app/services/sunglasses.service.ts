@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
+import { item } from '../models/sunglasses.model';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +11,9 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 export class SunglassesService {
 
   sunglassesList: Sunglasses[];
+  formulario: FormGroup;
+
+  private CARPETA_IMAGENES = 'img';
 
   private coleccionGafas: AngularFirestoreCollection<Sunglasses>;
 
@@ -16,8 +22,8 @@ export class SunglassesService {
     this.coleccionGafas = firestore.collection<Sunglasses>('Gafas');
   }
 
-  agregarGafas(gafas: Sunglasses): void {
-    this.coleccionGafas.add(gafas);
+  agregarGafas(gafas): void {
+    this.firestore.collection('Gafas').add(gafas);
   }
 
   eliminarGafas(id) {
@@ -66,14 +72,18 @@ export class SunglassesService {
 
       //La lista luego de mapear el item recibe todos los elementos eun Array
       this.sunglassesList = accion.map(item => {
+
+
         return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
+
       });
 
       //Recorre ese array para obtener cada elemento y así compararlo hasta encontrar el termino.
       this.sunglassesList.forEach(element => {
-
         if (element.title.toLowerCase().indexOf(termino.toLowerCase()) >= 0) {
           sunglassesList.push(this.traerGafa(element.id));
+          console.log(element);
+
         }
       });
 
@@ -83,12 +93,74 @@ export class SunglassesService {
 
   }
 
+  cargarImagenesFirebase(imagenes: item[]) {
+    // console.log(imagenes);
+    const storageRef = firebase.storage().ref();
+
+    for (const item of imagenes) {
+
+      item.estaSubiendo = true;
+      if (item.progreso >= 100 && this.isForm()) {
+        continue;
+      } else {
+        const uploadTask: firebase.storage.UploadTask = storageRef.child(`${this.CARPETA_IMAGENES}/${item.nombreArchivo}`).put(item.archivo);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          (snapshot: firebase.storage.UploadTaskSnapshot) => item.progreso = (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
+          (error) => console.error('Error al subir', error),
+          () => {
+            console.log('Imagen Cargada correctamente');
+
+            uploadTask.snapshot.ref.getDownloadURL()
+              .then((link) => {
+                item.estaSubiendo = false;
+                this.formulario = this.getForm();
+                this.guardarImagen({ title: this.formulario.controls['title'].value, subtitle: this.formulario.controls['subtitle'].value, description: this.formulario.controls['description'].value, url: link });
+                
+              });
+
+
+
+          }
+        );
+
+
+
+      }
+
+    }
+  }
+
+  private guardarImagen(imagen: { title: string, subtitle: string, description: string, url: string }) {
+    this.firestore.collection('Gafas').add(imagen);
+  }
+
+  setForm(form: FormGroup) {
+    if (form) {
+      this.formulario = form;
+    } else {
+      return;
+    }
+  }
+
+  private getForm() {
+    return this.formulario;
+  }
+
+  private isForm(): boolean {
+    if (this.getForm()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 
 export interface Sunglasses {
   id: number,
-  title: String,
-  subtitle: String,
-  description: String,
-  url: String,
+  title: string,
+  subtitle: string,
+  description: string,
+  url: string,
 }

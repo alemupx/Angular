@@ -1,48 +1,80 @@
-<div class="container-fluid">
-    <form [formGroup]="formulario" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="formulario" novalidate (ngSubmit)="onSubmit()">
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['title'].valid}">
 
-        <div class="row">
-            <div class="form-group row" [ngClass]="{'has-danger': !formulario.controls['title'].valid}">
+        <label [for]="title">Título</label>
+        <input class="form-control" type="text" formControlName="title">
+        <div class="animated fadeIn fast" *ngIf="formulario.controls['title'].hasError('required')">
+            El título es <strong>requerido</strong>
+        </div>
+    </div>
 
-                <input placeholder="Título" class="form-control" type="text" formControlName="title">
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['subtitle'].valid}">
 
-                <div class="animated fadeIn fast" *ngIf="formulario.controls['title'].hasError('required')">
-                    El título es <strong>requerido</strong>
-                </div>
+        <label [for]="subtitle">Subtítulo</label>
+        <input class="form-control" type="text" formControlName="subtitle">
+        <div class="animated fadeIn fast" *ngIf="formulario.controls['subtitle'].hasError('required')">
+            El subtítulo es <strong>requerido</strong>
+        </div>
+    </div>
+
+    <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['description'].valid}">
+
+        <label [for]="description">Descripción</label>
+        <input class="form-control" type="text" formControlName="description">
+
+        <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('minlength')">
+            La descripción debe contener al menos <strong>15 caracteres</strong>
+        </div>
+        <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('required')">
+            La descripción es <strong>requerida</strong>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div appNgDropFiles [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}" class="well drop-zone file-over">
+                <h4>Deje caer la imagen</h4>
+                <img src="../../../../assets/images/drop-images.png">
             </div>
         </div>
 
-        <div class="row">
-            <div class="form-group row">
-                <input placeholder="Subtítulo" class="form-control" type="text" formControlName="subtitle">
-                <div class="animated fadeIn fast" *ngIf="formulario.controls['subtitle'].hasError('required')">
-                    El subtítulo es <strong>requerido</strong>
-                </div>
-            </div>
+        <div class="col-md-8">
+            <!-- <h4>Cargar archivo</h4> -->
+            <!-- <button [disabled]="archivos.length==0" (click)="cargarImagenes()" class="btn btn-success mr-3">Cargar a
+                Firebase</button> -->
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre archivo</th>
+                        <th>Tamaño</th>
+                        <th>Progreso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr [ngClass]="{'alert alert-success': archivo.progreso>=100}" *ngFor="let archivo of archivos">
+                        <td>{{archivo.nombreArchivo}}</td>
+                        <td>{{archivo.archivo.size / 1024 / 1024 | number:'.2-2'}} MB</td>
+                        <td>
+                            <div class=" progress ">
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{'width': archivo.progreso + '%' }">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="row">
-            <div class="form-group row">
-                <input placeholder="Descripción" class="form-control" type="text" formControlName="description">
+    </div>
 
-                <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('minlength')">
-                    La descripción debe contener al menos <strong>15 caracteres</strong>
-                </div>
-                <div class="animated fadeIn fast" *ngIf="formulario.controls['description'].hasError('required')">
-                    La descripción es <strong>requerida</strong>
-                </div>
-            </div>
-        </div>
+    <!-- <button [disabled]="!this.formulario.valid" type="submit" class="btn btn-primary btn-lg btn-block">
+        Guardar
+    </button> -->
+
+    <button [disabled]="archivos.length==0 || !this.formulario.valid" (click)="cargarImagenes()" class="btn btn-success btn-lg btn-block">Subir imagen</button>
+
+    <button class=" btn btn-danger btn-lg btn-block" (click)="limpiarArchivos()"> Limpiar</button>
 
 
-        <div class="row">
-            <div class="form-group row">
-                <button type="submit" class="btn btn-outline-primary">
-                    Guardar
-                </button>
-            </div>
-        </div>
-
-    </form>
-
-</div>
+</form>

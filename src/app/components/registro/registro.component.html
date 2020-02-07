@@ -1,44 +1,36 @@
 <div class="limiter animated fadeInRight">
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90" style="background-color: #fafafa;">
-            <form #formularioRegistro="ngForm" (ngSubmit)="onSubmit(formularioRegistro)"
-                class="login100-form validate-form flex-sb flex-w">
+            <form #formularioRegistro="ngForm" (ngSubmit)="onSubmit(formularioRegistro)" class="login100-form validate-form flex-sb flex-w">
 
-                <span class="login100-form-title p-b-51">
+                <span class="login100-form-title p-b-51" style="color: yellow;">
                     Crear nueva cuenta
                 </span>
 
-                <span *ngIf="formularioRegistro.submitted && formularioRegistro.controls['email'].errors"
-                    class="text-danger animated fadeIn fast">El correo es obligatorio</span>
+                <span *ngIf="formularioRegistro.submitted && formularioRegistro.controls['email'].errors" class="text-danger animated fadeIn fast">El correo es obligatorio</span>
 
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="email" name="email" required email [(ngModel)]="usuario.email"
-                        placeholder="Email">
+                    <input class="input100" type="email" name="email" required email [(ngModel)]="usuario.email" placeholder="Email" style="color: black;">
 
                     <span class="focus-input100"></span>
                 </div>
 
-                <span *ngIf="formularioRegistro.submitted && formularioRegistro.controls['nombre'].errors"
-                    class="text-danger animated fadeIn fast">El nombre es obligatorio</span>
+                <span *ngIf="formularioRegistro.submitted && formularioRegistro.controls['nombre'].errors" class="text-danger animated fadeIn fast">El nombre es obligatorio</span>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="nombre" required minlength="2"
-                        [(ngModel)]="usuario.nombre" placeholder="Nombre y apellidos">
+                    <input class="input100" type="text" name="nombre" required minlength="2" [(ngModel)]="usuario.nombre" placeholder="Nombre y apellidos" style="color: black;">
 
                     <span class="focus-input100"></span>
                 </div>
 
-                <span *ngIf="formularioRegistro.submitted && formularioRegistro.controls['pass'].errors"
-                    class="text-danger animated fadeIn fast">La contraseña debe de ser más de 6 letras</span>
+                <span *ngIf="formularioRegistro.submitted && formularioRegistro.controls['pass'].errors" class="text-danger animated fadeIn fast">La contraseña debe de ser más de 6 letras</span>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="password" name="pass" required minlength="6"
-                        [(ngModel)]="usuario.password" placeholder="Password">
+                    <input class="input100" type="password" name="pass" required minlength="6" [(ngModel)]="usuario.password" placeholder="Contraseña" style="color: black;">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="flex-sb-m w-full p-t-3 p-b-24">
                     <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"
-                            [(ngModel)]="recordarme">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" [(ngModel)]="recordarme">
                         <label class="label-checkbox100" for="ckb1">
                             Recordar mi usuario
                         </label>
@@ -52,8 +44,8 @@
                 </div>
 
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" type="submit">
-                        Crear cuenta
+                    <button class="login100-form-btn" style="background-color: yellow; color: white;" type="submit">
+                        Ingresar
                     </button>
                 </div>
 

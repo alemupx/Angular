@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { item } from '../../../models/sunglasses.model';
+import { SunglassesService } from '../../../services/sunglasses.service';
+
 
 @Component({
   selector: 'app-add-sunglasses',
@@ -8,14 +12,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AddSunglassesComponent implements OnInit {
 
+  estaSobreElemento = false;
+  archivos: item[] = [];
   formulario: FormGroup;
 
-  constructor() {
+
+  constructor(private servicioSubir: SunglassesService) {
 
     this.formulario = new FormGroup({
       title: new FormControl('', Validators.required),
       subtitle: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.compose([Validators.required, Validators.minLength(1)])),
+      description: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3)])),
     });
   }
 
@@ -23,10 +30,22 @@ export class AddSunglassesComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formulario);
-    this.formulario.reset();
+
+    if (!this.formulario.valid) {
+      return;
+    } 
+    this.servicioSubir.setForm(this.formulario);
+
   }
 
+  cargarImagenes() {
+    this.servicioSubir.cargarImagenesFirebase(this.archivos);
+  }
+
+  limpiarArchivos() {
+    this.archivos = [];
+    this.formulario.reset();
+  }
 }
 
 

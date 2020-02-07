@@ -38,6 +38,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { MatListModule } from '@angular/material/list';
     LoginComponent,
     RegistroComponent,
     AddSunglassesComponent,
-    SidenavComponent
+    SidenavComponent,
+    NgDropFilesDirective
 
   ],
   imports: [

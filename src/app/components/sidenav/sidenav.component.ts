@@ -26,7 +26,8 @@ export class SidenavComponent {
   }
 
   buscarGafas(busqueda: string) {
-
+    
+    
     if (this._sunglassesService.buscarGafas(busqueda)) {
       this.router.navigate(['/search', busqueda]);
     }

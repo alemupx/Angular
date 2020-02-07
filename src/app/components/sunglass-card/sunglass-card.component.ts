@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { SunglassesService } from '../../services/sunglasses.service';
 
 @Component({
   selector: 'app-sunglass-card',
@@ -12,13 +13,17 @@ export class SunglassCardComponent implements OnInit {
   @Input() id: number;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private servicio:SunglassesService) { }
 
   ngOnInit() {
   }
 
   viewSunglasses() {
     this.router.navigate(['/sunglass', this.id]);
+  }
+
+  deleteSunglasses(id) {
+    this.servicio.eliminarGafas(id);
   }
 
 }
