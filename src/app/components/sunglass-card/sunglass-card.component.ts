@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { SunglassesService } from '../../services/sunglasses.service';
 
 @Component({
@@ -13,9 +14,13 @@ export class SunglassCardComponent implements OnInit {
   @Input() id: number;
 
 
-  constructor(private router: Router, private servicio:SunglassesService) { }
+  constructor(private router: Router, private servicio: SunglassesService, private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  estaLogueado() {
+    return this.auth.estaAutenticado();
   }
 
   viewSunglasses() {

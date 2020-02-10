@@ -1,9 +1,10 @@
-<div class="card p-3 animated fadeIn fast">
+<div class="card animated fadeIn fast">
     <img class="card-img-top img-fluid" [src]="sunglass.url" [alt]="sunglass.title">
     <div class="card-body">
         <h5 class="card-title">{{sunglass.title}}</h5>
+        <small class="card-subtitle mb-2">{{sunglass.subtitle}}</small>
         <p class="card-text"><small class="text-muted">{{sunglass.description}}</small></p>
         <button (click)="viewSunglasses()" class="btn btn-outline-primary btn-block">Ver más...</button>
-        <button (click)="deleteSunglasses(sunglass.id)" class="btn btn-outline-danger btn-block">Eliminar</button>
+        <button *ngIf="estaLogueado()" (click)="deleteSunglasses(sunglass.id)" class="btn btn-outline-danger btn-block">Eliminar</button>
     </div>
 </div>

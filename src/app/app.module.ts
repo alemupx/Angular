@@ -40,6 +40,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { AddSunglassesV2Component } from './components/forms/add-sunglasses-v2/add-sunglasses-v2.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { AddSunglassesV2Component } from './components/forms/add-sunglasses-v2/a
     AddSunglassesComponent,
     SidenavComponent,
     NgDropFilesDirective,
-       AddSunglassesV2Component
+       AddSunglassesV2Component,
+       CarouselComponent
 
   ],
   imports: [
