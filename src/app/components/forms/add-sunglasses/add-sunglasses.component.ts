@@ -39,7 +39,7 @@ export class AddSunglassesComponent implements OnInit {
   }
 
   cargarImagenes() {
-    this.servicioSubir.cargarImagenesFirebase(this.archivos);
+    this.servicioSubir.cargarImagenFirebase(this.archivos);
   }
 
   limpiarArchivos() {

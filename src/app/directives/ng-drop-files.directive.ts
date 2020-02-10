@@ -27,6 +27,8 @@ export class NgDropFilesDirective {
 
   @HostListener('drop', ['$event'])
   public onDrop(event: any) {
+    console.log(event);
+    
     this.mouseSobre.emit(false);
 
     const transferencia = this._getTransferencia(event);
@@ -76,6 +78,8 @@ export class NgDropFilesDirective {
         this.archivos.push(nuevoArchivo);
       }
     }
+    console.log('Extraccion final archivos:');
+    
     console.log(this.archivos);
   }
 

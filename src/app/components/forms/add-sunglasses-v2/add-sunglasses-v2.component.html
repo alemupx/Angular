@@ -1,4 +1,7 @@
+<h1>Agregar gafas</h1>
+<hr>
 <form [formGroup]="formulario" novalidate (ngSubmit)="onSubmit()">
+
     <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['title'].valid}">
 
         <label for="title">Título</label>
@@ -31,6 +34,28 @@
 
     </div>
 
+    <table *ngIf="formulario.controls['image'].valid" class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Tamaño</th>
+                <th>Progreso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [ngClass]="{'alert alert-success': archivo.progreso>=100}" *ngFor="let archivo of archivos">
+                <td>{{archivo.nombreArchivo}}</td>
+                <td>{{archivo.archivo.size / 1024 / 1024 | number:'.2-2'}} MB</td>
+                <td>
+                    <div class=" progress ">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{'width': archivo.progreso + '%' }">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="form-group animated fadeIn" [ngClass]="{'alert alert-danger animated fadeIn':!formulario.controls['image'].valid}">
         <input hidden (change)="onUpload($event)" formControlName="image" #fileInput type="file" id="file">
         <div *ngIf="formulario.controls['image'].hasError('required')">
@@ -38,56 +63,12 @@
         </div>
     </div>
 
-
-
-    <div class="row">
-
-
-        <div class="col-md-8">
-            <!-- <h4>Cargar archivo</h4> -->
-            <!-- <button [disabled]="archivos.length==0" (click)="cargarImagenes()" class="btn btn-success mr-3">Cargar a
-                Firebase</button> -->
-
-
-
-        </div>
-
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Nombre archivo</th>
-                    <th>Tamaño</th>
-                    <th>Progreso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr [ngClass]="{'alert alert-success': archivo.progreso>=100}" *ngFor="let archivo of archivos">
-                    <td>{{archivo.name}}</td>
-                    <td>{{archivo.size / 1024 / 1024 | number:'.2-2'}} MB</td>
-                    <td>
-                        <div class=" progress ">
-                            <div class="progress-bar" role="progressbar" [ngStyle]="{'width': archivo.progreso + '%' }">
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-
-    </div>
-
-
-
-    <!-- <button [disabled]="!this.formulario.valid" type="submit" class="btn btn-primary btn-lg btn-block">
-        Guardar
-    </button> -->
-    <button class="btn btn-primary btn-lg btn-block" type="button" (click)="fileInput.click($event)">Seleccionar
+    <button [disabled]="archivos.length >= 1" class="btn btn-primary btn-lg btn-block" type="button" (click)="fileInput.click($event)">Seleccionar
         archivo</button>
 
-    <button [disabled]="archivos.length == 0 || !this.formulario.valid" (click)="cargarImagenes()" class="btn btn-success btn-lg btn-block">Subir imagen</button>
+    <button [disabled]="archivos.length == 0 || !this.formulario.valid" (click)="cargarImagen()" class="btn btn-success btn-lg btn-block">Subir imagen</button>
 
-    <button class=" btn btn-danger btn-lg btn-block" (click)="limpiarArchivos()"> Limpiar</button>
-
+    <button [disabled]="archivos.length == 0" class=" btn btn-danger btn-lg btn-block" (click)="limpiarArchivos()">
+        Limpiar</button>
 
 </form>

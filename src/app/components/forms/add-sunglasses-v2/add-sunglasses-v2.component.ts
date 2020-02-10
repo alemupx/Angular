@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { item } from '../../../models/sunglasses.model';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { SunglassesService } from '../../../services/sunglasses.service';
@@ -8,16 +8,13 @@ import { SunglassesService } from '../../../services/sunglasses.service';
   templateUrl: './add-sunglasses-v2.component.html',
   styleUrls: ['./add-sunglasses-v2.component.css']
 })
-export class AddSunglassesV2Component implements OnInit {
-
+export class AddSunglassesV2Component {
 
   estaSobreElemento = false;
   archivos: item[] = [];
   formulario: FormGroup;
 
-
   constructor(private servicioSubir: SunglassesService) {
-
     this.formulario = new FormGroup({
       title: new FormControl('', Validators.required),
       subtitle: new FormControl('', Validators.required),
@@ -26,22 +23,11 @@ export class AddSunglassesV2Component implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   onSubmit() {
-
     if (!this.formulario.valid) {
       return;
     }
     this.servicioSubir.setForm(this.formulario);
-
-  }
-
-  cargarImagenes() {
-    console.log(this.archivos);
-    
-    this.servicioSubir.cargarImagenesFirebase(this.archivos);
   }
 
   limpiarArchivos() {
@@ -51,8 +37,13 @@ export class AddSunglassesV2Component implements OnInit {
 
   onUpload(evento) {
     const file = evento.target.files[0];
-    this.archivos.push(file);
-    console.log(file);
-    
+    const nuevoArchivo = new item(file);
+    this.archivos.push(nuevoArchivo);
+    // console.log(this.archivos);
   }
+
+  cargarImagen() {
+    this.servicioSubir.cargarImagenFirebase(this.archivos);
+  }
+
 }

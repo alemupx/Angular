@@ -11,15 +11,14 @@ import { FormGroup } from '@angular/forms';
 export class SunglassesService {
 
   sunglassesList: Sunglasses[];
+  archivos: item[] = [];
   formulario: FormGroup;
 
   private CARPETA_IMAGENES = 'img';
 
-  private coleccionGafas: AngularFirestoreCollection<Sunglasses>;
 
   constructor(private firestore: AngularFirestore) {
     console.log('Servicio Gafas iniciado...');
-    this.coleccionGafas = firestore.collection<Sunglasses>('Gafas');
   }
 
   agregarGafas(gafas): void {
@@ -27,10 +26,10 @@ export class SunglassesService {
   }
 
   eliminarGafas(id) {
-    this.firestore.collection('Gafas').doc(id).delete().then(function () {
-      console.log("Document successfully deleted!");
-    }).catch(function (error) {
-      console.error("Error removing document: ", error);
+    this.firestore.collection('Gafas').doc(id).delete().then(() => {
+      console.log('Document successfully deleted!');
+    }).catch((error) => {
+      console.error('Error removing document: ', error);
     });
   }
 
@@ -39,19 +38,19 @@ export class SunglassesService {
   }
 
   traerGafa(id: any): Sunglasses {
-    let foo = new Array();
-    let gafasTemporales = {} as Sunglasses;
+    const foo = new Array();
+    const gafasTemporales = {} as Sunglasses;
 
     this.traerGafas().subscribe(accion => {
 
-      //La lista luego de mapear el item recibe todos los elementos un Array
-      this.sunglassesList = accion.map(item => {
-        return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
+      // La lista luego de mapear el item recibe todos los elementos un Array
+      this.sunglassesList = accion.map(elementos => {
+        return { id: elementos.payload.doc.id, ...elementos.payload.doc.data() } as Sunglasses;
       });
 
-      //Recorre ese array para obtener cada elemento y así 
+      // Recorre ese array para obtener cada elemento y así
       this.sunglassesList.forEach(element => {
-        if (element.id == id) {
+        if (element.id === id) {
           gafasTemporales.id = element.id;
           gafasTemporales.title = element.title;
           gafasTemporales.subtitle = element.subtitle;
@@ -66,19 +65,16 @@ export class SunglassesService {
 
   buscarGafas(termino: string): Sunglasses[] {
 
-    let sunglassesList: Sunglasses[] = [];
+    const sunglassesList: Sunglasses[] = [];
 
     this.traerGafas().subscribe(accion => {
 
-      //La lista luego de mapear el item recibe todos los elementos eun Array
-      this.sunglassesList = accion.map(item => {
-
-
-        return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
-
+      // La lista luego de mapear el item recibe todos los elementos eun Array
+      this.sunglassesList = accion.map(elementos => {
+        return { id: elementos.payload.doc.id, ...elementos.payload.doc.data() } as Sunglasses;
       });
 
-      //Recorre ese array para obtener cada elemento y así compararlo hasta encontrar el termino.
+      // Recorre ese array para obtener cada elemento y así compararlo hasta encontrar el termino.
       this.sunglassesList.forEach(element => {
         if (element.title.toLowerCase().indexOf(termino.toLowerCase()) >= 0) {
           sunglassesList.push(this.traerGafa(element.id));
@@ -93,51 +89,46 @@ export class SunglassesService {
 
   }
 
-  cargarImagenesFirebase(imagenes: item[]) {
-    // console.log(imagenes);
+  cargarImagenFirebase(imagenes: item[]) {
+
     const storageRef = firebase.storage().ref();
 
-    for (const item of imagenes) {
+    for (const imagen of imagenes) {
 
-      item.estaSubiendo = true;
-      if (item.progreso >= 100 && this.isForm()) {
+      imagen.estaSubiendo = true;
+      if (imagen.progreso >= 100 && this.isForm()) {
         continue;
       } else {
-        const uploadTask: firebase.storage.UploadTask = storageRef.child(`${this.CARPETA_IMAGENES}/${item.nombreArchivo}`).put(item.archivo);
+
+        const uploadTask: firebase.storage.UploadTask = storageRef.child(
+          `${this.CARPETA_IMAGENES}/${imagen.nombreArchivo}`).put(imagen.archivo
+          );
 
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-          (snapshot: firebase.storage.UploadTaskSnapshot) => item.progreso = (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
+          (snapshot: firebase.storage.UploadTaskSnapshot) => imagen.progreso = (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
           (error) => console.error('Error al subir', error),
           () => {
-            console.log('Imagen Cargada correctamente');
-
+            // console.log('Imagen Cargada correctamente');
             uploadTask.snapshot.ref.getDownloadURL()
               .then((link) => {
-                item.estaSubiendo = false;
+                imagen.estaSubiendo = false;
                 this.formulario = this.getForm();
-                this.guardarImagen({ title: this.formulario.controls['title'].value, subtitle: this.formulario.controls['subtitle'].value, description: this.formulario.controls['description'].value, url: link });
-                
+                this.guardarImagen({
+                  title: this.formulario.controls.title.value,
+                  subtitle: this.formulario.controls.subtitle.value,
+                  description: this.formulario.controls.description.value, url: link
+                });
               });
-
-
-
           }
         );
-
-
-
       }
-
     }
-  }
-
-  cargarImagenFB(){
-    
   }
 
   private guardarImagen(imagen: { title: string, subtitle: string, description: string, url: string }) {
     this.firestore.collection('Gafas').add(imagen);
   }
+
 
   setForm(form: FormGroup) {
     if (form) {
@@ -162,9 +153,9 @@ export class SunglassesService {
 }
 
 export interface Sunglasses {
-  id: number,
-  title: string,
-  subtitle: string,
-  description: string,
-  url: string,
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  url: string;
 }
