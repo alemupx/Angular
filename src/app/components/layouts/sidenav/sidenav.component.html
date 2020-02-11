@@ -32,9 +32,24 @@
 
             <div class="espaciadorNavegador"></div>
 
+
+            <mat-icon>shopping_cart </mat-icon>
+            <div class="mr-1"></div>
+            <a (click)="verCantidad()">
+                <span></span>
+                <span class="badge badge-light">{{cantidad}}</span>
+
+            </a>
+
+
+            <div class="mr-3"></div>
+
+
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
+
+
 
         </mat-toolbar>
 

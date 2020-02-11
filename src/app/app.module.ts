@@ -1,29 +1,32 @@
-//Modules
+// Modules
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 
-//Material
-import { MatToolbarModule, MatIconModule } from '@angular/material/';
+// Material
+import { MatToolbarModule, MatIconModule, MatDialogModule } from '@angular/material/';
 
 
-//Notificaciones
+
+// Notificaciones
 import { ToastrModule } from 'ngx-toastr';
 
-//Firebase
+// Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage'
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
-//Components
+// Components
 import { AppComponent } from './app.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
+import { SidenavComponent } from './components/layouts/sidenav/sidenav.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { SunglassesComponent } from './components/sunglasses/sunglasses.component';
 import { SunglassComponent } from './components/sunglass/sunglass.component';
@@ -33,14 +36,13 @@ import { SunglassCardComponent } from './components/sunglass-card/sunglass-card.
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { AddSunglassesComponent } from './components/forms/add-sunglasses/add-sunglasses.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { AddSunglassesV2Component } from './components/forms/add-sunglasses-v2/add-sunglasses-v2.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
-import { AddSunglassesV2Component } from './components/forms/add-sunglasses-v2/add-sunglasses-v2.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
+import { ModalComponent } from './components/sunglass-card/modal/modal.component';
 
 
 @NgModule({
@@ -58,8 +60,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     AddSunglassesComponent,
     SidenavComponent,
     NgDropFilesDirective,
-       AddSunglassesV2Component,
-       CarouselComponent
+    AddSunglassesV2Component,
+    ModalComponent
 
   ],
   imports: [
@@ -79,9 +81,11 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     LayoutModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent],
 })
 export class AppModule { }
