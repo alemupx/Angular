@@ -6,7 +6,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { SunglassesService } from 'src/app/services/sunglasses.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
-import { resolve } from 'url';
 
 
 @Component({
@@ -16,6 +15,7 @@ import { resolve } from 'url';
 })
 export class SidenavComponent implements OnInit {
 
+  estaSobreElemento = false;
   cantidad: number;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map
@@ -40,10 +40,6 @@ export class SidenavComponent implements OnInit {
     this.cantidad = this.cart.getCantidad();
   }
 
-  estaLogueado() {
-    return this.auth.estaAutenticado();
-  }
-
   buscarGafas(busqueda: string) {
 
 
@@ -53,13 +49,17 @@ export class SidenavComponent implements OnInit {
 
   }
 
+  estaLogueado() {
+    return this.auth.estaAutenticado();
+  }
+
   cerrarSesion() {
     this.auth.logOut();
     this.router.navigateByUrl('/login');
   }
 
   verCantidad() {
-    console.log(
-      this.cart.getCantidad());
+    console.log(this.estaSobreElemento);
+
   }
 }

@@ -35,7 +35,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SunglassCardComponent } from './components/sunglass-card/sunglass-card.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { AddSunglassesComponent } from './components/forms/add-sunglasses/add-sunglasses.component';
 import { AddSunglassesV2Component } from './components/forms/add-sunglasses-v2/add-sunglasses-v2.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -57,7 +56,6 @@ import { ModalComponent } from './components/sunglass-card/modal/modal.component
     SunglassCardComponent,
     LoginComponent,
     RegistroComponent,
-    AddSunglassesComponent,
     SidenavComponent,
     NgDropFilesDirective,
     AddSunglassesV2Component,

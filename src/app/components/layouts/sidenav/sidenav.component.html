@@ -5,9 +5,6 @@
 
         <mat-nav-list>
 
-            <div mat-list-item class="m-2">
-                <input class="form-control" type="search" placeholder="Buscar..." (keyup.enter)="buscarGafas(buscarTexto.value)" #buscarTexto>
-            </div>
             <a mat-list-item [routerLink]="['/sunglasses']" routerLinkActive="router-link-active">Gafas</a>
             <a mat-list-item [routerLink]="['/about-us']" routerLinkActive="router-link-active">Acerca de nosotros</a>
 
@@ -36,13 +33,18 @@
             <mat-icon>shopping_cart </mat-icon>
             <div class="mr-1"></div>
             <a (click)="verCantidad()">
-                <span></span>
                 <span class="badge badge-light">{{cantidad}}</span>
-
             </a>
 
-
             <div class="mr-3"></div>
+
+            <div mat-list-item class="m-2 animated fadeIn" *ngIf="estaSobreElemento">
+                <input class="form-control" type="search" placeholder="Buscar..." (keyup.enter)="buscarGafas(buscarTexto.value)" #buscarTexto>
+            </div>
+            <mat-icon appNgDropFiles (mouseSobre)="estaSobreElemento = $event" [ngStyle]="estaSobreElemento == true && { 'color': 'yellow' }">search
+            </mat-icon>
+
+            <div class="mr-2"></div>
 
 
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
