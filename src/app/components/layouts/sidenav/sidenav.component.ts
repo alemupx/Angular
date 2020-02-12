@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { SunglassesService } from 'src/app/services/sunglasses.service';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 
 
@@ -17,6 +17,7 @@ export class SidenavComponent implements OnInit {
 
   estaSobreElemento = false;
   cantidad: number;
+  routeHidden: boolean;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map
     (result => result.matches),
@@ -24,7 +25,15 @@ export class SidenavComponent implements OnInit {
   );
 
   ngOnInit() {
-    // this.cantidad = this.cart.getCantidad();
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        if (e.url === '/' || e.url === '/sunglasses' || e.url === '/home' || e.url === '/login' || e.url === '/index') {
+          this.routeHidden = false;
+        } else {
+          this.routeHidden = true;
+        }
+      }
+    });
   }
 
 
@@ -58,8 +67,4 @@ export class SidenavComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  verCantidad() {
-    console.log(this.estaSobreElemento);
-
-  }
 }

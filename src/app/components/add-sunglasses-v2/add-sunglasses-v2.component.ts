@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { item } from '../../../models/sunglasses.model';
+import { item } from '../../models/sunglasses.model';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { SunglassesService } from '../../../services/sunglasses.service';
+import { SunglassesService } from '../../services/sunglasses.service';
 
 @Component({
   selector: 'app-add-sunglasses-v2',

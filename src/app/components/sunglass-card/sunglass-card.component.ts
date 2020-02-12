@@ -53,6 +53,7 @@ export class SunglassCardComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
+      panelClass: 'app-dialog',
       data: { cantidad: this.cantidad, objeto: this.sunglass }
     });
 

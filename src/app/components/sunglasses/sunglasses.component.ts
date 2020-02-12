@@ -11,12 +11,12 @@ export class SunglassesComponent implements OnInit {
 
   sunglassesList: Sunglasses[];
 
-  constructor(private _sunglassesService: SunglassesService) { }
+  constructor(private sunglassesService: SunglassesService) { }
 
   ngOnInit() {
-    this._sunglassesService.traerGafas().subscribe(accion => {
+    this.sunglassesService.traerGafas().subscribe(accion => {
       this.sunglassesList = accion.map(item => {
-        return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses
+        return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses;
       });
     });
   }

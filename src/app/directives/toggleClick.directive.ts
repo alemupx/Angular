@@ -1,29 +1,28 @@
 import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appNgDropFiles]'
+  selector: '[toggleClickDirective]'
 })
-export class NgDropFilesDirective {
+export class ToggleClickDirective {
 
-  estaSobre: boolean;
   contador = 0;
 
   constructor() { }
 
-  @Output() mouseSobre: EventEmitter<boolean> = new EventEmitter();
-
+  @Output() emisorEvento: EventEmitter<boolean> = new EventEmitter();
 
   @HostListener('click', ['$event'])
   public onClick(event: any) {
 
+    console.log('click');
+
     if (this.contador >= 1) {
       this.contador = 0;
-      this.mouseSobre.emit(false);
+      this.emisorEvento.emit(false);
       return;
     }
 
-    this.mouseSobre.emit(true);
-    this.estaSobre = false;
+    this.emisorEvento.emit(true);
     this.contador++;
   }
 

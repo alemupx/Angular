@@ -1,9 +1,6 @@
 <h1>Gafas</h1>
-<hr style="color: yellow;">
+<hr>
 <div class="card-columns">
-
-    <!-- La etiqueta al estar especializada con un Input permite el envio de variables para trabajar con estas -->
     <app-sunglass-card [sunglass]="sunglass" [id]="sunglass.id" *ngFor="let sunglass of sunglassesList; let i=index">
     </app-sunglass-card>
-
 </div>
