@@ -16,6 +16,7 @@ import { CartService } from '../../../services/cart.service';
 export class SidenavComponent implements OnInit {
 
   estaSobreElemento = false;
+  estaSobreElemento2 = false;
   cantidad: number;
   routeHidden: boolean;
 

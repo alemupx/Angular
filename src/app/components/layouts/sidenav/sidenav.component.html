@@ -31,36 +31,36 @@
         <!-- Navigation bar -->
         <mat-toolbar color="primary">
 
-            <a [routerLink]="['/sunglasses']"><img src="../../../assets/icons/navbarIcon.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+            <button type="button" mat-icon-button [routerLink]="['/sunglasses']">
+                <img src="../../../assets/icons/navbarIcon.png" width="30" height="30">
+            </button>
 
             <app-go-back *ngIf="routeHidden && !estaSobreElemento"></app-go-back>
 
             <div class="espaciadorNavegador"></div>
 
-            <a [routerLink]="['/cart']" style="color: white;">
-                <mat-icon *ngIf="!estaLogueado()" toggleClickDirective>shopping_cart </mat-icon>
-            </a>
-
-            <div class="mr-1 mt-2"></div>
-            <a *ngIf="!estaLogueado()">
-                <span class="badge badge-light mt-1">3</span>
-            </a>
-
+            <button type="button" mat-icon-button [routerLink]="['/cart']" *ngIf="!estaLogueado()">
+                <mat-icon>shopping_cart
+                </mat-icon>
+                <span class="badge badge-light ml-1">3</span>
+            </button>
 
             <div class="mr-3"></div>
 
             <div mat-list-item class="m-2 animated fadeIn" *ngIf="estaSobreElemento">
                 <input class="form-control" type="search" placeholder="Buscar..." (keyup.enter)="buscarGafas(buscarTexto.value)" #buscarTexto>
             </div>
-            <mat-icon toggleClickDirective (emisorEvento)="estaSobreElemento = $event" [ngStyle]="estaSobreElemento == true && { 'color': 'yellow' }">search
-            </mat-icon>
+
+            <button type="button" mat-icon-button toggleClickDirective (emisorEvento)="estaSobreElemento = $event">
+                <mat-icon [ngStyle]="estaSobreElemento == true && { 'color': 'yellow' }">search
+                </mat-icon>
+            </button>
 
             <div class="mr-2"></div>
 
-            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            <button type="button" mat-icon-button (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
             </button>
-
 
 
         </mat-toolbar>
