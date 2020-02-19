@@ -3,39 +3,36 @@
     <h1>Mi Carro</h1>
     <hr>
 
-    <div class="container">
+    <div class="container-fluid" *ngIf="mostrar">
 
-        <div class="row">
+        <div class="container" *ngFor="let item of lista ; let i = index;">
+            <div class="row flex-column flex-lg-row">
 
-            <img class="img" style="width: 137px;" src="../../../assets/sunglasses/2.jpg" alt="">
-            <div class="col-xs-6 ml-4">
-                <div class=" font-weight-bold">Gafas A</div>
-                <div class="m-2"></div>
-                <div>$ 180.000</div>
-                <div style="margin-bottom: 5rem;"></div>
+                <div class="col-lg-6 mb-lg-0">
 
-                <div class="btn-group btn-block" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-danger">-</button>
-                    <button disabled type="button" class="btn btn-outline-secondary">1</button>
-                    <button type="button" class="btn btn-outline-success">+</button>
+                    <div class="carousel slide" id="carousel-ecommerce-01" data-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img class="img-fluid" [src]="item.objeto.url" alt=""></div>
+                        </div>
+
+
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <br>
+                <div class="col-lg-6">
+                    <h2 class="mt-4 mb-4">{{item.objeto.title}}</h2>
+                    <p class="mt-4 mb-4">{{item.objeto.description}}</p>
 
-        <div class="row">
-            <img class="img" style="width: 137px;" src="../../../assets/sunglasses/3.jpg" alt="">
-            <div class="col-xs-6 ml-4">
-                <div class=" font-weight-bold">Gafas B</div>
-                <div class="m-2"></div>
-                <div>$ 190.000</div>
-                <div style="margin-bottom: 5rem;"></div>
+                    <div class="d-flex align-items-center my-4">
+                        <!-- <p class="m-0">$150.000</p> -->
+                        <div class="btn-group ml-2" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-danger" (click)="operar('-',i)">-</button>
+                            <button disabled type="button" class="btn btn-outline-secondary">{{item.cantidad}}</button>
+                            <button type="button" class="btn btn-outline-primary" (click)="operar('+',i)">+</button>
+                        </div>
+                    </div>
 
-                <div class="btn-group btn-block" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-danger">-</button>
-                    <button disabled type="button" class="btn btn-outline-secondary">2</button>
-                    <button type="button" class="btn btn-outline-success">+</button>
                 </div>
             </div>
         </div>
@@ -45,9 +42,17 @@
         <div class="row align-items-center">
             <h3>Subtotal:</h3>
             <div class="ml-5">
-                <h5>$ 560.000</h5>
+                <!-- <h5>$ 300.000</h5> -->
             </div>
         </div>
 
 
+    </div>
+
+    <div class="container-fluid" *ngIf="!mostrar">
+        <div class="container">
+            <div class="row flex-column flex-lg-row">
+                Tu carro esta vacio
+            </div>
+        </div>
     </div>

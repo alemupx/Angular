@@ -10,16 +10,19 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AddSunglassesV2Component } from './components/add-sunglasses-v2/add-sunglasses-v2.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   // { path: 'registro', component: RegistroComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'about-us', component: AboutUsComponent },
-  { path: 'sunglass/:id', component: SunglassComponent },
-  { path: 'search/:id', component: SearchComponent },
+  { path: 'add-sunglasses', component: AddSunglassesV2Component, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'search/:id', component: SearchComponent },
+  { path: 'sunglasses', component: SunglassesComponent },
+  { path: 'sunglass/:id', component: SunglassComponent },
   { path: '**', component: SunglassesComponent },
 ];
 

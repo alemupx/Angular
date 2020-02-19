@@ -19,7 +19,7 @@ export class SunglassComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.sunglassesList);
+    // console.log(this.sunglassesList);
   }
 
 }

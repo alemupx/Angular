@@ -1,5 +1,5 @@
 <div *ngFor="let item of sunglassesList">
-    <div class="container animated fadeInLeft">
+    <div class="container">
 
         <h2>{{item.title | uppercase}}</h2>
         <h5 style="color: grey;">{{item.subtitle}}</h5>
@@ -9,8 +9,7 @@
                 {{item.description}}
             </p>
         </div>
-
-        <img class="mb-3 img-fluid animated fadeInRight" [src]="item.url" [alt]="">
+        <img class="mb-3 img-fluid animated fadeIn" [src]="item.url" [alt]="">
     </div>
 
 </div>

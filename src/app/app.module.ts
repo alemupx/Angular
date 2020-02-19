@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 // Material
-import { MatToolbarModule, MatIconModule, MatDialogModule } from '@angular/material/';
+import { MatToolbarModule, MatIconModule, MatDialogModule, MatBadgeModule, } from '@angular/material/';
 
 
 
@@ -44,7 +44,7 @@ import { ToggleClickDirective } from './directives/toggleClick.directive';
 import { ModalComponent } from './components/sunglass-card/modal/modal.component';
 import { CartComponent } from './components/cart/cart.component';
 import { GoBackComponent } from './components/layouts/go-back/go-back.component';
-
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import { GoBackComponent } from './components/layouts/go-back/go-back.component'
     AddSunglassesV2Component,
     ModalComponent,
     CartComponent,
-    GoBackComponent
+    GoBackComponent,
+    CarouselComponent
 
   ],
   imports: [
@@ -85,6 +86,7 @@ import { GoBackComponent } from './components/layouts/go-back/go-back.component'
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

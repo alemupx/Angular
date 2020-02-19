@@ -1,19 +1,3 @@
-<!-- <div class="card animated fadeIn fast">
-        <h5 class="card-title">{{data.objeto.title}}</h5>
-        <div class="card-body">
-            <img class="card-img-top img-fluid" [src]="data.objeto.url">
-        </div>
-    </div>
-    <div>
-        <div class="btn-group" role="group" aria-label="Basic example"></div>
-        <button type="button" class="btn btn-outline-danger">-</button>
-        <input class="text-center" disabled type="text" [(ngModel)]="cantidad">
-        <button type="button" class="btn btn-outline-success">+</button>
-        <button type="button" class="btn btn-outline-success" [mat-dialog-close]="cantidad">Agregar</button>
-
-    </div> -->
-
-
 <div class="container">
     <div class="card" style="max-width: 30rem;">
         <div class="card-header text-center">{{data.objeto.title}}</div>
@@ -21,17 +5,19 @@
         <div class="card-body text-center ">
             <p class="card-text">{{data.objeto.subtitle}}</p>
 
-            <img class="card-img-top" [src]="data.objeto.url">
+            <img class="modalito card-img-top" [src]="data.objeto.url">
         </div>
         <small></small>
         <div class="card-footer text-muted">
 
-            <div class="btn-group btn-block" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-danger">-</button>
+            <div class="btn-group btn-block mb-2" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-danger" (click)="operar('-')">-</button>
                 <button disabled type="button" class="btn btn-outline-secondary">{{data.cantidad}}</button>
-                <button type="button" class="btn btn-outline-success">+</button>
+                <button type="button" class="btn btn-outline-success" (click)="operar('+')">+</button>
             </div>
-            <button type="button" class="btn btn-outline-primary btn-block" [mat-dialog-close]="cantidad">Agregar</button>
+
+            <button type="button" class="btn btn-outline-success btn-block" [mat-dialog-close]="data">Agregar</button>
+            <button type="button" class="btn btn-outline-danger btn-block" [mat-dialog-close]="">Cancelar</button>
         </div>
     </div>
 </div>

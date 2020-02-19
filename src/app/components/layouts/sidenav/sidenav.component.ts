@@ -17,8 +17,10 @@ export class SidenavComponent implements OnInit {
 
   estaSobreElemento = false;
   estaSobreElemento2 = false;
-  cantidad: number;
+  cantidad;
   routeHidden: boolean;
+
+  carouselSpacing = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map
     (result => result.matches),
@@ -28,13 +30,24 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
-        if (e.url === '/' || e.url === '/sunglasses' || e.url === '/home' || e.url === '/login' || e.url === '/index') {
+
+        if (e.url === '/home') {
+          this.carouselSpacing = true;
+        } else {
+          this.carouselSpacing = false;
+        }
+
+        // Determina en que parte de la app esta para así mostrar o no el boton de volver atrás.
+        if (e.url === '/' || e.url === '/sunglasses' || e.url === '/home' || e.url === '/login' || e.url === '/index' || e.url === '/add-sunglasses') {
           this.routeHidden = false;
         } else {
           this.routeHidden = true;
         }
       }
     });
+
+
+
   }
 
 
@@ -47,7 +60,7 @@ export class SidenavComponent implements OnInit {
     private cart: CartService,
   ) {
 
-    this.cantidad = this.cart.getCantidad();
+
   }
 
   buscarGafas(busqueda: string) {

@@ -4,7 +4,7 @@ import { Sunglasses } from '../../../services/sunglasses.service';
 
 
 
-export interface DialogData {  
+export interface DialogData {
   cantidad: number;
   objeto: Sunglasses;
 }
@@ -16,22 +16,35 @@ export interface DialogData {
 })
 export class ModalComponent implements OnInit {
 
-  cantidad: number;
+  cantidad;
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, ) { }
 
   ngOnInit(): void {
-    this.cantidad = 0;
-    console.log(this.data);
+    this.cantidad = this.data.cantidad;
   }
 
-  onNoClick(): void {
-    console.log(this.data);
+  operar(operacion: string) {
+    if (operacion === '+') {
+      this.data.cantidad++;
+    }
 
-    this.dialogRef.close();
+    if (operacion === '-') {
+      if (this.data.cantidad <= 1) {
+        return;
+      }
+      this.data.cantidad--;
+
+    }
   }
+
+  // onClose(): void {
+  //   console.log('Siu');
+  //   console.log(this.data);
+  //   this.dialogRef.close();
+  // }
 
 
 

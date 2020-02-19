@@ -8,10 +8,6 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-#contenedorPrincipal {
-    margin: 20px;
-}
-
 .puntero {
     cursor: pointer;
 }
@@ -48,4 +44,61 @@ body {
 
 .app-dialog .mat-dialog-container {
     padding: 2em 1em 2em 1em;
+}
+
+.card-columns {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+}
+
+
+/* Dispositivos Moviles*/
+
+@media (min-width:34em) {
+    .modalito {
+        height: 25em;
+    }
+    .card-img-top .tarjeta {
+        height: 10em;
+    }
+}
+
+
+/* Dispositivos Tablet*/
+
+@media (min-width:576px) {
+    .card-columns {
+        column-count: 2;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+    }
+    .card-img-top .tarjeta {
+        height: 10em;
+    }
+    .modalito {
+        height: 15em;
+    }
+}
+
+
+/* Dispositivos Escritorio */
+
+@media (min-width:1024px) {
+    .card-columns {
+        column-count: 3;
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+    }
+    .modalito {
+        height: 25em;
+    }
+}
+
+@media (min-width:75em) {
+    .card-columns {
+        column-count: 4;
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+    }
 }

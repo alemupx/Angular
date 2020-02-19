@@ -4,9 +4,11 @@
         <mat-toolbar style="background-color: #212121; color: yellow;">Menu</mat-toolbar>
 
         <mat-nav-list>
-            <a *ngIf="estaLogueado()" mat-list-item [routerLink]="['/home']" routerLinkActive="router-link-active">Inicio</a>
-            <a mat-list-item [routerLink]="['/sunglasses']" routerLinkActive="router-link-active">Gafas</a>
-            <a mat-list-item [routerLink]="['/about-us']" routerLinkActive="router-link-active">Acerca de nosotros</a>
+            <a *ngIf="estaLogueado()" mat-list-item [routerLink]="['/add-sunglasses']" routerLinkActive>Agregar Gafas
+                <mat-icon style="margin-left: 2.5rem; color: yellow;">add
+                </mat-icon></a>
+            <a mat-list-item [routerLink]="['/sunglasses']" routerLinkActive>Gafas</a>
+            <a mat-list-item [routerLink]="['/about-us']" routerLinkActive>Acerca de nosotros</a>
 
         </mat-nav-list>
 
@@ -40,9 +42,10 @@
             <div class="espaciadorNavegador"></div>
 
             <button type="button" mat-icon-button [routerLink]="['/cart']" *ngIf="!estaLogueado()">
-                <mat-icon>shopping_cart
+                <mat-icon [matBadge]="cantidad" matBadgeColor="warn" [matBadgeHidden]="cantidad==0">shopping_cart
                 </mat-icon>
-                <span class="badge badge-light ml-1">3</span>
+                <!-- <span class="badge badge-light ml-1">{{cantidad}}</span> -->
+
             </button>
 
             <div class="mr-3"></div>
@@ -65,10 +68,10 @@
 
         </mat-toolbar>
 
-
+        <app-carousel *ngIf="carouselSpacing"></app-carousel>
 
         <!-- Navigation content -->
-        <div class="container main-container ">
+        <div class="container main-container">
             <router-outlet></router-outlet>
         </div>
 
