@@ -15,9 +15,19 @@ export class SunglassesComponent implements OnInit {
 
   ngOnInit() {
     this.sunglassesService.traerGafas().subscribe(accion => {
-      this.sunglassesList = accion.map(item => {
-        return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses;
-      });
+
+      // this.sunglassesList = accion.map(item => {
+      //   return { id: item.payload.doc.id, ...item.payload.doc.data() } as Sunglasses;
+      // });
+
+      const convertirDatos = accion => {
+        return {
+           id: accion.payload.doc.id, ...accion.payload.doc.data()
+        } as Sunglasses;
+      }
+
+      this.sunglassesList = accion.map(convertirDatos);
+
     });
   }
 

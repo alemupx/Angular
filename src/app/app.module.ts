@@ -45,6 +45,8 @@ import { ModalComponent } from './components/sunglass-card/modal/modal.component
 import { CartComponent } from './components/cart/cart.component';
 import { GoBackComponent } from './components/layouts/go-back/go-back.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { VideoComponent } from './components/video/video.component';
+import { MediaPlayerComponent } from './components/media-player/media-player.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ModalComponent,
     CartComponent,
     GoBackComponent,
-    CarouselComponent
+    CarouselComponent,
+    VideoComponent,
+    MediaPlayerComponent
 
   ],
   imports: [

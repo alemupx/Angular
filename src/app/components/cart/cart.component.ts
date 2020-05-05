@@ -40,9 +40,8 @@ export class CartComponent implements OnInit {
         this.lista.splice(index, 1);
         // console.log(this.cart.getCantidad());
         if (this.lista.length == 0) {
-          console.log('Corran que voy a explotar hijos de su puta madre >:V');
+          // console.log('Corran que voy a explotar hijos de su puta madre >:V');
       this.mostrar = false;
-
 
         }
 
